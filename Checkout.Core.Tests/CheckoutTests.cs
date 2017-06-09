@@ -1,7 +1,6 @@
 ﻿namespace Checkout.Core.Tests
 {
-
-    using System;
+    using Data;
     using NUnit.Framework;
 
     /// <summary>
@@ -10,6 +9,9 @@
     [TestFixture]
     public class CheckoutTests
     {
+        /// <summary>
+        /// The checkout.
+        /// </summary>
         private Checkout _checkout;
 
         /// <summary>
@@ -96,11 +98,9 @@
         }
 
         [Test]
-        [Ignore]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(InvalidProductException))]
         public void VerifyThatAnInvalidScannedItemReturnsAnError()
         {
-            // TODO: Create a custom exception and return to calling method.
             _checkout.Scan("Z");
         }
     }

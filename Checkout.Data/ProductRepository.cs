@@ -16,26 +16,30 @@
                 {
                     Id = 1,
                     Sku = "A",
-                    UnitPrice = 50
+                    UnitPrice = 50,
+                    Description = "Pineapple"
                 },
                 new Product
                 {
                     Id = 2,
                     Sku = "B",
-                    UnitPrice = 30
+                    UnitPrice = 30,
+                    Description = "Mango"
                 }
                 ,
                 new Product
                 {
                     Id = 3,
                     Sku = "C",
-                    UnitPrice = 20
+                    UnitPrice = 20,
+                    Description = "Kiwi"
                 },
                 new Product
                 {
                     Id = 4,
                     Sku = "D",
-                    UnitPrice = 15
+                    UnitPrice = 15,
+                    Description = "Melon"
                 }
             };
         }
@@ -47,7 +51,7 @@
 
         public Product SelectById(int id)
         {
-            throw new NotImplementedException();
+            return _products.First(x => x.Id == id);
         }
 
         public void Insert(Product product)
@@ -72,7 +76,13 @@
 
         public int GetProductUnitPrice(string skuCode)
         {
-            return _products.Find(x => x.Sku == skuCode).UnitPrice;
+            var product = _products.Find(x => x.Sku == skuCode);
+            if (product == null)
+            {
+                throw new InvalidProductException();
+            }
+
+            return product.UnitPrice;
         }
     }
 }

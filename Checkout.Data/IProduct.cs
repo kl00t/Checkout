@@ -25,5 +25,13 @@
         /// The unit price.
         /// </value>
         int UnitPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product description.
+        /// </summary>
+        /// <value>
+        /// The product description.
+        /// </value>
+        string Description { get; set; }
     }
 }

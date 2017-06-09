@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InvalidProductException.cs" />
     <Compile Include="IProduct.cs" />
     <Compile Include="IProductRepository.cs" />
     <Compile Include="Product.cs" />
