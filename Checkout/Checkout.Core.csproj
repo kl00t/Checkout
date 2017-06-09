@@ -44,6 +44,12 @@
     <Compile Include="ICheckout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Checkout.Data\Checkout.Data.csproj">
+      <Project>{2af520e6-b12e-44eb-b147-a3e34cb8a14d}</Project>
+      <Name>Checkout.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

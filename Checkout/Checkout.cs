@@ -1,15 +1,23 @@
 ﻿namespace Checkout.Core
 {
+    using Data;
+
     /// <summary>
     /// Checkout core class.
     /// </summary>
     public class Checkout : ICheckout
     {
         /// <summary>
+        /// The product repository
+        /// </summary>
+        private IProductRepository _productRepository;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Checkout"/> class.
         /// </summary>
         public Checkout()
         {
+            _productRepository = new ProductRepository();
         }
 
         /// <summary>
@@ -22,24 +30,9 @@
             {
                 TotalPrice += 0;
             }
-
-            TotalPrice += GetProductUnitPrice(item);
-        }
-
-        private static int GetProductUnitPrice(string skuCode)
-        {
-            switch (skuCode)
+            else
             {
-                case "A":
-                    return 50;
-                case "B":
-                    return 30;
-                case "C":
-                    return 20;
-                case "D":
-                    return 15;
-                default:
-                    return 0;
+                TotalPrice += _productRepository.GetProductUnitPrice(item);
             }
         }
 
