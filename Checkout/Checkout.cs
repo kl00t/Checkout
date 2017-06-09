@@ -3,7 +3,6 @@
     /// <summary>
     /// Checkout core class.
     /// </summary>
-    /// <seealso cref="Checkout.Core.ICheckout" />
     public class Checkout : ICheckout
     {
         /// <summary>
@@ -22,12 +21,17 @@
         {
             if (string.IsNullOrEmpty(item))
             {
-                TotalPrice = 0;
+                TotalPrice += 0;
             }
 
             if (item == "A")
             {
-                TotalPrice = 50;
+                TotalPrice = TotalPrice + 50;
+            }
+
+            if (item == "B")
+            {
+                TotalPrice = TotalPrice + 30;
             }
         }
 

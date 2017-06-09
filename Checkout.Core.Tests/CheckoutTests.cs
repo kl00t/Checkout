@@ -36,7 +36,17 @@
         [Test]
         public void VerifyTwoScannedItemsCalculatesTotalPrice()
         {
-            _checkout.Scan("A;B");
+            _checkout.Scan("A");
+            _checkout.Scan("B");
+            Assert.AreEqual(80, _checkout.GetTotalPrice());
+        }
+
+        [Test]
+        public void VerifyNoScannedItemIsIgnore()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan(string.Empty);
+            _checkout.Scan("B");
             Assert.AreEqual(80, _checkout.GetTotalPrice());
         }
     }
