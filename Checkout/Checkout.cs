@@ -10,7 +10,6 @@
         /// </summary>
         public Checkout()
         {
-            
         }
 
         /// <summary>
@@ -24,25 +23,23 @@
                 TotalPrice += 0;
             }
 
-            // TODO: We notice a lot of duplication here so the next round of refactoring I will remove this.
-            if (item == "A")
-            {
-                TotalPrice = TotalPrice + 50;
-            }
+            TotalPrice += GetProductUnitPrice(item);
+        }
 
-            if (item == "B")
+        private static int GetProductUnitPrice(string skuCode)
+        {
+            switch (skuCode)
             {
-                TotalPrice = TotalPrice + 30;
-            }
-
-            if (item == "C")
-            {
-                TotalPrice = TotalPrice + 20;
-            }
-
-            if (item == "D")
-            {
-                TotalPrice = TotalPrice + 15;
+                case "A":
+                    return 50;
+                case "B":
+                    return 30;
+                case "C":
+                    return 20;
+                case "D":
+                    return 15;
+                default:
+                    return 0;
             }
         }
 
