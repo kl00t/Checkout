@@ -17,9 +17,11 @@
         }
 
         [Test]
-        public void ExampleTest()
+        public void VerifyThatNoScannedItemsReturnsZeroPrice()
         {
-            Assert.AreEqual(1, 1);
+            var checkout = new Checkout();
+            checkout.Scan(string.Empty);
+            Assert.AreEqual(0, checkout.GetTotalPrice());
         }
     }
 }
