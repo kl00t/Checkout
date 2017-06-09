@@ -49,5 +49,15 @@
             _checkout.Scan("B");
             Assert.AreEqual(80, _checkout.GetTotalPrice());
         }
+
+        [Test]
+        public void VerifyAllScannedProductsReturnsCorrectTotalPrice()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("B");
+            _checkout.Scan("C");
+            _checkout.Scan("D");
+            Assert.AreEqual(115, _checkout.GetTotalPrice());
+        }
     }
 }
