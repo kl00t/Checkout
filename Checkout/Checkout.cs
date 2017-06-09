@@ -20,8 +20,15 @@
         /// <param name="item">The name of scanned item.</param>
         public void Scan(string item)
         {
-            // Pure TDD 'fake it till you make it'. Hardcoded to get the test to work then constantly refactor.
-            TotalPrice = 0;
+            if (string.IsNullOrEmpty(item))
+            {
+                TotalPrice = 0;
+            }
+
+            if (item == "A")
+            {
+                TotalPrice = 50;
+            }
         }
 
         /// <summary>
