@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Core.Tests", "Chec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Data", "Checkout.Data\Checkout.Data.csproj", "{2AF520E6-B12E-44EB-B147-A3E34CB8A14D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Data.Tests", "Checkout.Data.Tests\Checkout.Data.Tests.csproj", "{30A71F30-AFD3-49D2-8A04-AC519EE6120F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2AF520E6-B12E-44EB-B147-A3E34CB8A14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AF520E6-B12E-44EB-B147-A3E34CB8A14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AF520E6-B12E-44EB-B147-A3E34CB8A14D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A71F30-AFD3-49D2-8A04-AC519EE6120F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A71F30-AFD3-49D2-8A04-AC519EE6120F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A71F30-AFD3-49D2-8A04-AC519EE6120F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A71F30-AFD3-49D2-8A04-AC519EE6120F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

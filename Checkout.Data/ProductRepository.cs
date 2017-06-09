@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ProductRepository : IProductRepository
     {
@@ -51,7 +52,7 @@
 
         public void Insert(Product product)
         {
-            throw new NotImplementedException();
+            _products.Add(product);
         }
 
         public void Update(Product product)

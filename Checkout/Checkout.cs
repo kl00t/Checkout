@@ -10,7 +10,7 @@
         /// <summary>
         /// The product repository
         /// </summary>
-        private IProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Checkout"/> class.

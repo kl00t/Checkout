@@ -1,5 +1,7 @@
 ﻿namespace Checkout.Core.Tests
 {
+
+    using System;
     using NUnit.Framework;
 
     /// <summary>
@@ -58,6 +60,48 @@
             _checkout.Scan("C");
             _checkout.Scan("D");
             Assert.AreEqual(115, _checkout.GetTotalPrice());
+        }
+
+        [Test]
+        [Ignore]
+        public void VerifyThatDiscountIsAppliedToScannedItems()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            Assert.AreEqual(130, _checkout.GetTotalPrice());
+        }
+
+        [Test]
+        [Ignore]
+        public void VerifyThatDiscountIsAppliedThenAdditionalItem()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            Assert.AreEqual(180, _checkout.GetTotalPrice());
+        }
+
+        [Test]
+        [Ignore]
+        public void VerifyThatMultipleDiscountsAppliedToScannedItemsInAnyOrder()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("B");
+            _checkout.Scan("A");
+            _checkout.Scan("B");
+            _checkout.Scan("A");
+            Assert.AreEqual(175, _checkout.GetTotalPrice());
+        }
+
+        [Test]
+        [Ignore]
+        [ExpectedException(typeof(ArgumentException))]
+        public void VerifyThatAnInvalidScannedItemReturnsAnError()
+        {
+            // TODO: Create a custom exception and return to calling method.
+            _checkout.Scan("Z");
         }
     }
 }
