@@ -32,5 +32,12 @@
             _checkout.Scan("A");
             Assert.AreEqual(50, _checkout.GetTotalPrice());
         }
+
+        [Test]
+        public void VerifyTwoScannedItemsCalculatesTotalPrice()
+        {
+            _checkout.Scan("A;B");
+            Assert.AreEqual(80, _checkout.GetTotalPrice());
+        }
     }
 }
