@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basket.cs" />
     <Compile Include="Checkout.cs" />
+    <Compile Include="IBasket.cs" />
     <Compile Include="ICheckout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -74,15 +74,20 @@
             throw new NotImplementedException();
         }
 
-        public int GetProductUnitPrice(string skuCode)
-        {
-            var product = _products.Find(x => x.Sku == skuCode);
-            if (product == null)
-            {
-                throw new InvalidProductException();
-            }
+		public Product GetProductBySkuCode(string skuCode)
+		{
+			var product = _products.Find(x => x.Sku == skuCode);
+			if (product == null)
+			{
+				throw new InvalidProductException();
+			}
 
-            return product.UnitPrice;
+			return product;
+		}
+
+		public int GetProductUnitPrice(string skuCode)
+        {
+			return GetProductBySkuCode(skuCode).UnitPrice;
         }
     }
 }

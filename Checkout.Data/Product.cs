@@ -18,13 +18,13 @@
         /// </value>
         public string Sku { get; set; }
 
-        /// <summary>
-        /// Gets or sets the unit price.
-        /// </summary>
-        /// <value>
-        /// The unit price.
-        /// </value>
-        public int UnitPrice { get; set; }
+		/// <summary>
+		/// Gets or sets the unit price.
+		/// </summary>
+		/// <value>
+		/// The unit price.
+		/// </value>
+		public int UnitPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the product description.

@@ -12,12 +12,18 @@
         /// </summary>
         private readonly IProductRepository _productRepository;
 
+		/// <summary>
+		/// The basket of items.
+		/// </summary>
+		private readonly IBasket _basket;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Checkout"/> class.
         /// </summary>
         public Checkout()
         {
             _productRepository = new ProductRepository();
+			_basket = new Basket();
         }
 
         /// <summary>
@@ -32,7 +38,9 @@
             }
             else
             {
-                TotalPrice += _productRepository.GetProductUnitPrice(item);
+				var product = _productRepository.GetProductBySkuCode(item);
+				_basket.Products.Add(product);
+				TotalPrice += product.UnitPrice;
             }
         }
 

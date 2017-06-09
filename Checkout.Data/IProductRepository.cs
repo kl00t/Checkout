@@ -16,6 +16,8 @@
 
         void Save();
 
-        int GetProductUnitPrice(string skuCode);
+		Product GetProductBySkuCode(string skuCode);
+
+		int GetProductUnitPrice(string skuCode);
     }
 }
