@@ -8,20 +8,29 @@
     [TestFixture]
     public class CheckoutTests
     {
+        private Checkout _checkout;
+
         /// <summary>
         /// Called before each test is run.
         /// </summary>
         [SetUp]
         public void SetUp()
         {
+            _checkout = new Checkout();
         }
 
         [Test]
         public void VerifyThatNoScannedItemsReturnsZeroPrice()
         {
-            var checkout = new Checkout();
-            checkout.Scan(string.Empty);
-            Assert.AreEqual(0, checkout.GetTotalPrice());
+            _checkout.Scan(string.Empty);
+            Assert.AreEqual(0, _checkout.GetTotalPrice());
+        }
+
+        [Test]
+        public void VerifyScannedItemReturnsCorrectPrice()
+        {
+            _checkout.Scan("A");
+            Assert.AreEqual(50, _checkout.GetTotalPrice());
         }
     }
 }
