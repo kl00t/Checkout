@@ -11,7 +11,5 @@ namespace Checkout.Core
 		}
 
 		public IList<Product> Products { get; set; }
-
-
 	}
 }
