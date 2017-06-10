@@ -20,10 +20,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Checkout"/> class.
         /// </summary>
-        public Checkout()
+        public Checkout(IProductRepository productRepository, IBasket basket)
         {
-            _productRepository = new ProductRepository();
-			_basket = new Basket();
+            _productRepository = productRepository;
+			_basket = basket;
         }
 
         /// <summary>
@@ -52,7 +52,14 @@
         /// </returns>
         public int GetTotalPrice()
         {
-            return TotalPrice;
+			var subTotal = 0;
+			foreach(var item in _basket.Products)
+			{
+				subTotal += item.UnitPrice;
+			}
+
+			TotalPrice = subTotal;
+			return TotalPrice;
         }
 
         /// <summary>

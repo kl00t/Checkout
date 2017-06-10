@@ -20,7 +20,7 @@
         [SetUp]
         public void SetUp()
         {
-            _checkout = new Checkout();
+            _checkout = new Checkout(new ProductRepository(), new Basket());
         }
 
         [Test]
