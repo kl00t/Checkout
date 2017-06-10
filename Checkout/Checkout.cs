@@ -1,11 +1,12 @@
 ﻿namespace Checkout.Core
 {
     using Data;
+	using System.Collections.Generic;
 
-    /// <summary>
-    /// Checkout core class.
-    /// </summary>
-    public class Checkout : ICheckout
+	/// <summary>
+	/// Checkout core class.
+	/// </summary>
+	public class Checkout : ICheckout
     {
         /// <summary>
         /// The product repository
@@ -15,15 +16,15 @@
 		/// <summary>
 		/// The basket of items.
 		/// </summary>
-		private readonly IBasket _basket;
+		private readonly List<Product> _basket;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Checkout"/> class.
         /// </summary>
-        public Checkout(IProductRepository productRepository, IBasket basket)
+        public Checkout(IProductRepository productRepository)
         {
             _productRepository = productRepository;
-			_basket = basket;
+			_basket = new List<Product>();
         }
 
         /// <summary>
@@ -39,7 +40,7 @@
             else
             {
 				var product = _productRepository.GetProductBySkuCode(item);
-				_basket.Products.Add(product);
+				_basket.Add(product);
 				TotalPrice += product.UnitPrice;
             }
         }
@@ -53,7 +54,7 @@
         public int GetTotalPrice()
         {
 			var subTotal = 0;
-			foreach(var item in _basket.Products)
+			foreach(var item in _basket)
 			{
 				subTotal += item.UnitPrice;
 			}

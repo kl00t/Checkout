@@ -2,6 +2,11 @@
 {
     public class Product : IProduct
     {
+		public Product()
+		{
+			SpecialOffer = new SpecialOffer();
+		}
+
         /// <summary>
         /// Gets or sets the identifier.
         /// </summary>
@@ -33,5 +38,7 @@
         /// The product description.
         /// </value>
         public string Description { get; set; }
+
+		public SpecialOffer SpecialOffer { get; set; }
     }
 }

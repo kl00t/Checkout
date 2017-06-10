@@ -33,5 +33,7 @@
         /// The product description.
         /// </value>
         string Description { get; set; }
+
+		SpecialOffer SpecialOffer { get; set; }
     }
 }
