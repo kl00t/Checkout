@@ -22,7 +22,11 @@
                     Id = 9,
                     Sku = "A",
                     UnitPrice = 77,
-                    Description = "Orange"
+                    Description = "Orange",
+					SpecialOffer = new SpecialOffer
+					{
+						IsAvailable = false
+					}
                 });
 
             var product = _productRepository.SelectById(9);
@@ -41,8 +45,12 @@
                 Id = 1,
                 Sku = "Y",
                 UnitPrice = 88,
-                Description = "Pineapple"
-            });
+                Description = "Pineapple",
+				SpecialOffer = new SpecialOffer
+				{
+					IsAvailable = false
+				}
+			});
 
             Assert.AreEqual(88, _productRepository.GetProductUnitPrice("Y"));
         }

@@ -10,38 +10,7 @@
 
         public ProductRepository()
         {
-            _products = new List<Product>
-            {
-                new Product
-                {
-                    Id = 1,
-                    Sku = "A",
-                    UnitPrice = 50,
-                    Description = "Pineapple"
-                },
-                new Product
-                {
-                    Id = 2,
-                    Sku = "B",
-                    UnitPrice = 30,
-                    Description = "Mango"
-                }
-                ,
-                new Product
-                {
-                    Id = 3,
-                    Sku = "C",
-                    UnitPrice = 20,
-                    Description = "Kiwi"
-                },
-                new Product
-                {
-                    Id = 4,
-                    Sku = "D",
-                    UnitPrice = 15,
-                    Description = "Melon"
-                }
-            };
+			_products = new List<Product>();
         }
 
         public IEnumerable<Product> SelectAll()
