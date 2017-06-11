@@ -33,16 +33,11 @@
         /// <param name="item">The name of scanned item.</param>
         public void Scan(string item)
         {
-            if (string.IsNullOrEmpty(item))
-            {
-                TotalPrice += 0;
-            }
-            else
-            {
+			if (!string.IsNullOrEmpty(item))
+			{
 				var product = _productRepository.GetProductBySkuCode(item);
 				_basket.Add(product);
-				TotalPrice += product.UnitPrice;
-            }
+			}
         }
 
         /// <summary>
