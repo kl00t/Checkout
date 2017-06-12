@@ -151,19 +151,6 @@
         }
 
         [Test]
-        [Ignore]
-        public void VerifyThatDiscountIsAppliedMultipleTimesWithSameProduct()
-        {
-            _checkout.Scan("A");
-            _checkout.Scan("A");
-            _checkout.Scan("A");
-            _checkout.Scan("A");
-            _checkout.Scan("A");
-            _checkout.Scan("A");
-            Assert.AreEqual(260, _checkout.GetTotalPrice());
-        }
-
-        [Test]
         public void VerifyThatMultipleDiscountsAppliedToScannedItemsInAnyOrder()
         {
             _checkout.Scan("A");
@@ -180,6 +167,36 @@
         {
 			_mockProductRepository.Setup(x => x.GetProductBySkuCode("Z")).Throws<InvalidProductException>();
 			_checkout.Scan("Z");
+        }
+
+        [Test]
+        [Ignore]
+        public void VerifyThatDiscountIsAppliedMultipleTimesWithSameProduct()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            Assert.AreEqual(260, _checkout.GetTotalPrice());
+        }
+
+        [Test]
+        [Ignore]
+        public void VerifyThatDiscountIsAppliedMultipleTimesWithMultipleProducts()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("B");
+            _checkout.Scan("B");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("B");
+            _checkout.Scan("B");
+            Assert.AreEqual(350, _checkout.GetTotalPrice());
         }
     }
 }
