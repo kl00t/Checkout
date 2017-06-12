@@ -34,11 +34,13 @@
         /// <param name="item">The name of scanned item.</param>
         public void Scan(string item)
         {
-			if (!string.IsNullOrEmpty(item))
-			{
-				var product = _productRepository.GetProductBySkuCode(item);
-				_basket.Add(product);
-			}
+            if (string.IsNullOrEmpty(item))
+            {
+                // check condition and return early.
+                return;
+            }
+
+            _basket.Add(_productRepository.GetProductBySkuCode(item));
         }
 
         /// <summary>
@@ -50,21 +52,20 @@
         public int GetTotalPrice()
         {
             var subTotal = 0;
-
             var totalDiscount = 0;
 
-            // 1) Group the items in basket by SKUcode.
+            // group the items in basket by SKUcode.
             var groupedProductList = _basket.GroupBy(u => u.Sku).Select(grp => grp.ToList()).ToList();
 
             foreach (var productGroup in groupedProductList)
             {
-                // 2) if the item special offer is available
+                // if the item special offer is available
                 if (productGroup.Any(x => x.SpecialOffer.IsAvailable))
                 {
                     var quantity = productGroup.First().SpecialOffer.Quantity;
                     var discount = productGroup.First().SpecialOffer.Discount;
 
-                    // 3) then Group them by the quantity
+                    //  then Group them by the quantity
                     var itemsToCalculate = productGroup.Take(quantity);
 
                     // if items matches the quantity for discount then apply discount.
@@ -73,21 +74,10 @@
                         // apply the discount
                         totalDiscount += discount;
                     }
+                }
 
-                    // total up the items.
-                    foreach (var item in productGroup)
-                    {
-                        subTotal += item.UnitPrice;
-                    }
-                }
-                else
-                {
-                    // no special offer on items so just total up the items.
-                    foreach (var item in productGroup)
-                    {
-                        subTotal += item.UnitPrice;
-                    }
-                }
+                // total up the items.
+                subTotal += productGroup.Sum(item => item.UnitPrice);
             }
 
             TotalPrice = subTotal - totalDiscount;
