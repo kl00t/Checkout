@@ -51,11 +51,10 @@
         {
             var subTotal = 0;
 
+            var totalDiscount = 0;
+
             // 1) Group the items in basket by SKUcode.
-            var groupedProductList = _basket
-                .GroupBy(u => u.Sku)
-                .Select(grp => grp.ToList())
-                .ToList();
+            var groupedProductList = _basket.GroupBy(u => u.Sku).Select(grp => grp.ToList()).ToList();
 
             foreach (var productGroup in groupedProductList)
             {
@@ -66,7 +65,14 @@
                     var discount = productGroup.First().SpecialOffer.Discount;
 
                     // 3) then Group them by the quantity
-                    // 4) apply the discount at the end.
+                    var itemsToCalculate = productGroup.Take(quantity);
+
+                    // if items matches the quantity for discount then apply discount.
+                    if (itemsToCalculate.Count() == quantity)
+                    {
+                        // apply the discount
+                        totalDiscount += discount;
+                    }
 
                     // total up the items.
                     foreach (var item in productGroup)
@@ -84,7 +90,7 @@
                 }
             }
 
-			TotalPrice = subTotal;
+            TotalPrice = subTotal - totalDiscount;
 			return TotalPrice;
         }
 
@@ -95,5 +101,13 @@
         /// The total price.
         /// </value>
         public int TotalPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets the total discount.
+        /// </summary>
+        /// <value>
+        /// The total discount.
+        /// </value>
+        public int Discount { get; set; }
     }
 }

@@ -142,7 +142,6 @@
         }
 
         [Test]
-        [Ignore]
         public void VerifyThatDiscountIsAppliedThenAdditionalItem()
         {
             _checkout.Scan("A");
