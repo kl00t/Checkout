@@ -3,14 +3,6 @@
     public interface IProduct
     {
         /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        int Id { get; set; }
-
-        /// <summary>
         /// Gets or sets the sku.
         /// </summary>
         /// <value>
@@ -34,6 +26,12 @@
         /// </value>
         string Description { get; set; }
 
-		SpecialOffer SpecialOffer { get; set; }
+        /// <summary>
+        /// Gets or sets the special offer.
+        /// </summary>
+        /// <value>
+        /// The special offer.
+        /// </value>
+        SpecialOffer SpecialOffer { get; set; }
     }
 }

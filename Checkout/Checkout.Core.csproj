@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Checkout.cs" />
-    <Compile Include="Discounts.Designer.cs">
+    <Compile Include="Resources\Discounts.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Discounts.resx</DependentUpon>
@@ -57,7 +57,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Discounts.resx">
+    <EmbeddedResource Include="Resources\Discounts.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Discounts.Designer.cs</LastGenOutput>
     </EmbeddedResource>

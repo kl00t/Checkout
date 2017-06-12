@@ -4,6 +4,10 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Checkout.Data.IProductRepository" />
     public class ProductRepository : IProductRepository
     {
         private readonly List<Product> _products; 
@@ -11,16 +15,6 @@
         public ProductRepository()
         {
 			_products = new List<Product>();
-        }
-
-        public IEnumerable<Product> SelectAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product SelectById(int id)
-        {
-            return _products.First(x => x.Id == id);
         }
 
         public void Insert(Product product)
@@ -33,7 +27,7 @@
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
+        public void Delete(string sku)
         {
             throw new NotImplementedException();
         }
@@ -54,9 +48,9 @@
 			return product;
 		}
 
-		public int GetProductUnitPrice(string skuCode)
+        public int GetProductUnitPrice(string skuCode)
         {
-			return GetProductBySkuCode(skuCode).UnitPrice;
+            return GetProductBySkuCode(skuCode).UnitPrice;
         }
     }
 }

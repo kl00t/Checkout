@@ -2,22 +2,46 @@
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Product repository interface definition.
+    /// </summary>
     public interface IProductRepository
     {
-        IEnumerable<Product> SelectAll();
-
-        Product SelectById(int id);
-
+        /// <summary>
+        /// Inserts the specified product.
+        /// </summary>
+        /// <param name="product">The product.</param>
         void Insert(Product product);
 
+        /// <summary>
+        /// Updates the specified product.
+        /// </summary>
+        /// <param name="product">The product.</param>
         void Update(Product product);
 
-        void Delete(int id);
+        /// <summary>
+        /// Deletes the specified sku.
+        /// </summary>
+        /// <param name="sku">The sku.</param>
+        void Delete(string sku);
 
+        /// <summary>
+        /// Saves this instance.
+        /// </summary>
         void Save();
 
-		Product GetProductBySkuCode(string skuCode);
+        /// <summary>
+        /// Gets the product by sku code.
+        /// </summary>
+        /// <param name="skuCode">The sku code.</param>
+        /// <returns>Returns the product by the sku code.</returns>
+        Product GetProductBySkuCode(string skuCode);
 
-		int GetProductUnitPrice(string skuCode);
+        /// <summary>
+        /// Gets the product unit price.
+        /// </summary>
+        /// <param name="skuCode">The sku code.</param>
+        /// <returns>Returns the product unit price by the sku code.</returns>
+        int GetProductUnitPrice(string skuCode);
     }
 }

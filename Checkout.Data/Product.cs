@@ -8,14 +8,6 @@
 		}
 
         /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        public int Id { get; set; }
-
-        /// <summary>
         /// Gets or sets the sku.
         /// </summary>
         /// <value>
@@ -39,6 +31,12 @@
         /// </value>
         public string Description { get; set; }
 
-		public SpecialOffer SpecialOffer { get; set; }
+        /// <summary>
+        /// Gets or sets the special offer.
+        /// </summary>
+        /// <value>
+        /// The special offer.
+        /// </value>
+        public SpecialOffer SpecialOffer { get; set; }
     }
 }

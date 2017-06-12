@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Checkout.Core {
+namespace Checkout.Core.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Checkout.Core {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Checkout.Core.Discounts", typeof(Discounts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Checkout.Core.Resources.Discounts", typeof(Discounts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

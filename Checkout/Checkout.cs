@@ -1,11 +1,11 @@
 ﻿namespace Checkout.Core
 {
-
     using System;
     using Data;
 	using System.Collections.Generic;
     using System.Linq;
     using Extensions;
+    using Resources;
 
     /// <summary>
 	/// Checkout core class.
@@ -69,6 +69,12 @@
         /// </returns>
         public int GetTotalPrice()
         {
+            CalculatePrice();
+			return TotalPrice;
+        }
+
+        private void CalculatePrice()
+        {
             var subTotal = 0;
             var totalDiscount = 0;
 
@@ -101,12 +107,6 @@
 
             TotalDiscount = totalDiscount;
             TotalPrice = subTotal - totalDiscount;
-			return TotalPrice;
-        }
-
-        private void CalculatePrice()
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -124,6 +124,14 @@
         /// The total discount.
         /// </value>
         public int TotalDiscount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sub total.
+        /// </summary>
+        /// <value>
+        /// The sub total.
+        /// </value>
+        public int SubTotal { get; set; }
 
         /// <summary>
         /// Gets the total discounts.

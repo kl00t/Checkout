@@ -19,7 +19,6 @@
             _productRepository.Insert(
                 new Product
                 {
-                    Id = 9,
                     Sku = "A",
                     UnitPrice = 77,
                     Description = "Orange",
@@ -29,7 +28,7 @@
 					}
                 });
 
-            var product = _productRepository.SelectById(9);
+            var product = _productRepository.GetProductBySkuCode("A");
 
             Assert.AreEqual("A", product.Sku);
             Assert.AreEqual(77, product.UnitPrice);
@@ -42,7 +41,6 @@
             _productRepository.Insert(
             new Product
             {
-                Id = 1,
                 Sku = "Y",
                 UnitPrice = 88,
                 Description = "Pineapple",
