@@ -1,7 +1,7 @@
 ﻿namespace Checkout.Core
 {
     /// <summary>
-    /// Checkout interface.
+    /// Checkout interface definition.
     /// </summary>
     interface ICheckout
     {
@@ -10,6 +10,12 @@
         /// </summary>
         /// <param name="item">The name of scanned item.</param>
         void Scan(string item);
+
+        /// <summary>
+        /// Cancels the scanned scan.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        void CancelScan(string item);
 
         /// <summary>
         /// Gets the total price.

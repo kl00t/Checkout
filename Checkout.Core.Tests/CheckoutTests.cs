@@ -15,10 +15,10 @@
         /// </summary>
         private Checkout _checkout;
 
-		/// <summary>
-		/// The product repository.
-		/// </summary>
-		private Mock<IProductRepository> _mockProductRepository;
+        /// <summary>
+        /// The product repository.
+        /// </summary>
+        private Mock<IProductRepository> _mockProductRepository;
 
         /// <summary>
         /// Called before each test is run.
@@ -26,66 +26,69 @@
         [SetUp]
         public void SetUp()
         {
-			_mockProductRepository = new Mock<IProductRepository>();
+            _mockProductRepository = new Mock<IProductRepository>();
 
-			_mockProductRepository.Setup(x => x.GetProductBySkuCode("A"))
-				.Returns(new Product
-				{
-					Sku = "A",
-					UnitPrice = 50,
-					Description = "Pineapple",
-					SpecialOffer = new SpecialOffer
-					{
-						IsAvailable = true,
-						Quantity = 3,
-						Discount = 20
-					}
-				});
+            _mockProductRepository.Setup(x => x.GetProductBySkuCode("A"))
+                .Returns(new Product
+                {
+                    Sku = "A",
+                    UnitPrice = 50,
+                    Description = "Pineapple",
+                    SpecialOffer = new SpecialOffer
+                    {
+                        IsAvailable = true,
+                        Quantity = 3,
+                        Discount = 20
+                    }
+                });
 
-			_mockProductRepository.Setup(x => x.GetProductBySkuCode("B"))
-				.Returns(
-				new Product
-				{
-					Sku = "B",
-					UnitPrice = 30,
-					Description = "Mango",
-					SpecialOffer = new SpecialOffer
-					{
-						IsAvailable = true,
-						Quantity = 2,
-						Discount = 15
-					}
-				});
+            _mockProductRepository.Setup(x => x.GetProductBySkuCode("B"))
+                .Returns(
+                    new Product
+                    {
+                        Sku = "B",
+                        UnitPrice = 30,
+                        Description = "Mango",
+                        SpecialOffer = new SpecialOffer
+                        {
+                            IsAvailable = true,
+                            Quantity = 2,
+                            Discount = 15
+                        }
+                    });
 
-			_mockProductRepository.Setup(x => x.GetProductBySkuCode("C"))
-				.Returns(
-				new Product
-				{
-					Sku = "C",
-					UnitPrice = 20,
-					Description = "Kiwi",
-					SpecialOffer = new SpecialOffer
-					{
-						IsAvailable = false
-					}
-				});
+            _mockProductRepository.Setup(x => x.GetProductBySkuCode("C"))
+                .Returns(
+                    new Product
+                    {
+                        Sku = "C",
+                        UnitPrice = 20,
+                        Description = "Kiwi",
+                        SpecialOffer = new SpecialOffer
+                        {
+                            IsAvailable = false
+                        }
+                    });
 
-			_mockProductRepository.Setup(x => x.GetProductBySkuCode("D"))
-				.Returns(
-				new Product
-				{
-					Sku = "D",
-					UnitPrice = 15,
-					Description = "Melon",
-					SpecialOffer = new SpecialOffer
-					{
-						IsAvailable = false
-					}
-				});
+            _mockProductRepository.Setup(x => x.GetProductBySkuCode("D"))
+                .Returns(
+                    new Product
+                    {
+                        Sku = "D",
+                        UnitPrice = 15,
+                        Description = "Melon",
+                        SpecialOffer = new SpecialOffer
+                        {
+                            IsAvailable = false
+                        }
+                    });
 
-			_checkout = new Checkout(_mockProductRepository.Object);
+            _checkout = new Checkout(_mockProductRepository.Object);
         }
 
+        /// <summary>
+        /// Verifies the that no scanned items returns zero price.
+        /// </summary>
         [Test]
         public void VerifyThatNoScannedItemsReturnsZeroPrice()
         {
@@ -93,6 +96,9 @@
             Assert.AreEqual(0, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the scanned item returns correct price.
+        /// </summary>
         [Test]
         public void VerifyScannedItemReturnsCorrectPrice()
         {
@@ -100,6 +106,9 @@
             Assert.AreEqual(50, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the two scanned items calculates total price.
+        /// </summary>
         [Test]
         public void VerifyTwoScannedItemsCalculatesTotalPrice()
         {
@@ -108,6 +117,9 @@
             Assert.AreEqual(80, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the no scanned item is ignore.
+        /// </summary>
         [Test]
         public void VerifyNoScannedItemIsIgnore()
         {
@@ -117,16 +129,22 @@
             Assert.AreEqual(80, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies all scanned products returns correct total price.
+        /// </summary>
         [Test]
         public void VerifyAllScannedProductsReturnsCorrectTotalPrice()
         {
-			_checkout.Scan("A");
+            _checkout.Scan("A");
             _checkout.Scan("B");
             _checkout.Scan("C");
             _checkout.Scan("D");
             Assert.AreEqual(115, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the that discount is applied to scanned items.
+        /// </summary>
         [Test]
         public void VerifyThatDiscountIsAppliedToScannedItems()
         {
@@ -136,6 +154,9 @@
             Assert.AreEqual(130, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the that discount is applied then additional item.
+        /// </summary>
         [Test]
         public void VerifyThatDiscountIsAppliedThenAdditionalItem()
         {
@@ -146,6 +167,9 @@
             Assert.AreEqual(180, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the that multiple discounts applied to scanned items in any order.
+        /// </summary>
         [Test]
         public void VerifyThatMultipleDiscountsAppliedToScannedItemsInAnyOrder()
         {
@@ -157,14 +181,20 @@
             Assert.AreEqual(175, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the that an invalid scanned item returns an error.
+        /// </summary>
         [Test]
-        [ExpectedException(typeof(InvalidProductException))]
+        [ExpectedException(typeof (InvalidProductException))]
         public void VerifyThatAnInvalidScannedItemReturnsAnError()
         {
-			_mockProductRepository.Setup(x => x.GetProductBySkuCode("Z")).Throws<InvalidProductException>();
-			_checkout.Scan("Z");
+            _mockProductRepository.Setup(x => x.GetProductBySkuCode("Z")).Throws<InvalidProductException>();
+            _checkout.Scan("Z");
         }
 
+        /// <summary>
+        /// Verifies the that discount is applied multiple times with same product.
+        /// </summary>
         [Test]
         public void VerifyThatDiscountIsAppliedMultipleTimesWithSameProduct()
         {
@@ -177,6 +207,9 @@
             Assert.AreEqual(260, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the that discount is applied multiple times with multiple products.
+        /// </summary>
         [Test]
         public void VerifyThatDiscountIsAppliedMultipleTimesWithMultipleProducts()
         {
@@ -193,6 +226,9 @@
             Assert.AreEqual(350, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the that discounted items does not trigger discount.
+        /// </summary>
         [Test]
         public void VerifyThatDiscountedItemsDoesNotTriggerDiscount()
         {
@@ -201,6 +237,9 @@
             Assert.AreEqual(100, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the that scanned item cancel has no effect on empty basket.
+        /// </summary>
         [Test]
         public void VerifyThatScannedItemCancelHasNoEffectOnEmptyBasket()
         {
@@ -208,6 +247,20 @@
             Assert.AreEqual(0, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the that an invalid scanned cancelled item returns an error.
+        /// </summary>
+        [Test]
+        [ExpectedException(typeof (InvalidProductException))]
+        public void VerifyThatAnInvalidScannedCancelledItemReturnsAnError()
+        {
+            _mockProductRepository.Setup(x => x.GetProductBySkuCode("Z")).Throws<InvalidProductException>();
+            _checkout.CancelScan("Z");
+        }
+
+        /// <summary>
+        /// Verifies the that scanned item can be cancelled.
+        /// </summary>
         [Test]
         public void VerifyThatScannedItemCanBeCancelled()
         {
@@ -216,6 +269,9 @@
             Assert.AreEqual(0, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the no scan cancelled item is ignored.
+        /// </summary>
         [Test]
         public void VerifyNoScanCancelledItemIsIgnored()
         {
@@ -223,16 +279,48 @@
             Assert.AreEqual(0, _checkout.GetTotalPrice());
         }
 
+        /// <summary>
+        /// Verifies the total discounts applied.
+        /// </summary>
         [Test]
         public void VerifyTotalDiscountsApplied()
         {
             _checkout.Scan("A");
             _checkout.Scan("A");
             _checkout.Scan("A");
-            Assert.AreEqual(130, _checkout.GetTotalPrice());
+            _checkout.GetTotalPrice();
             Assert.AreEqual(20, _checkout.TotalDiscount);
         }
 
+        /// <summary>
+        /// Verifies the sub total before discounts applied.
+        /// </summary>
+        [Test]
+        public void VerifySubTotalBeforeDiscountsApplied()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.GetTotalPrice();
+            Assert.AreEqual(150, _checkout.SubTotal);
+        }
+
+        /// <summary>
+        /// Verifies the total price property returns correct result.
+        /// </summary>
+        [Test]
+        public void VerifyTotalPricePropertyReturnsCorrectResult()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.GetTotalPrice();
+            Assert.AreEqual(130, _checkout.TotalPrice);
+        }
+
+        /// <summary>
+        /// Verifies the total discounts not applied message.
+        /// </summary>
         [Test]
         public void VerifyTotalDiscountsNotAppliedMessage()
         {
@@ -242,6 +330,9 @@
             Assert.AreEqual("You did not save any money on your shopping today.", _checkout.GetTotalDiscounts());
         }
 
+        /// <summary>
+        /// Verifies the total discounts applied message.
+        /// </summary>
         [Test]
         public void VerifyTotalDiscountsAppliedMessage()
         {
@@ -250,17 +341,6 @@
             _checkout.Scan("A");
             _checkout.GetTotalPrice();
             Assert.AreEqual("You saved £20 on your shopping today.", _checkout.GetTotalDiscounts());
-        }
-
-        [Test]
-        [Ignore]
-        public void VerifySubTotalBeforeDiscountsApplied()
-        {
-            _checkout.Scan("A");
-            _checkout.Scan("A");
-            _checkout.Scan("A");
-            _checkout.GetTotalPrice();
-            Assert.AreEqual(150, _checkout.SubTotal);
         }
     }
 }

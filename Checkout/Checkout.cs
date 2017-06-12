@@ -1,6 +1,5 @@
 ﻿namespace Checkout.Core
 {
-    using System;
     using Data;
 	using System.Collections.Generic;
     using System.Linq;
@@ -70,43 +69,19 @@
         public int GetTotalPrice()
         {
             CalculatePrice();
-			return TotalPrice;
+            TotalPrice = SubTotal - TotalDiscount;
+            return TotalPrice;
         }
 
-        private void CalculatePrice()
+        /// <summary>
+        /// Gets the total discounts.
+        /// </summary>
+        /// <returns>
+        /// Returns the total discounts message.
+        /// </returns>
+        public string GetTotalDiscounts()
         {
-            var subTotal = 0;
-            var totalDiscount = 0;
-
-            // group the items in basket by SKUcode.
-            var groupedProductList = _basket.GroupBy(u => u.Sku).Select(grp => grp.ToList()).ToList();
-
-            foreach (var productGroup in groupedProductList)
-            {
-                // if the item special offer is available
-                if (productGroup.Any(x => x.SpecialOffer.IsAvailable))
-                {
-                    var quantity = productGroup.First().SpecialOffer.Quantity;
-                    var discount = productGroup.First().SpecialOffer.Discount;
-
-                    //  then Group them by the quantity
-                    foreach (var itemsToCalculate in productGroup.SplitItems(quantity))
-                    {
-                        // if items matches the quantity for discount then apply discount.
-                        if (itemsToCalculate.Count() == quantity)
-                        {
-                            // apply the discount
-                            totalDiscount += discount;
-                        }
-                    }
-                }
-
-                // total up the items.
-                subTotal += productGroup.Sum(item => item.UnitPrice);
-            }
-
-            TotalDiscount = totalDiscount;
-            TotalPrice = subTotal - totalDiscount;
+            return TotalDiscount == 0 ? Discounts.NoDiscountsApplied : string.Format(Discounts.DiscountsApplied, TotalDiscount);
         }
 
         /// <summary>
@@ -133,15 +108,39 @@
         /// </value>
         public int SubTotal { get; set; }
 
+
+
         /// <summary>
-        /// Gets the total discounts.
+        /// Method that calculates the price.
         /// </summary>
-        /// <returns>
-        /// Returns the total discounts message.
-        /// </returns>
-        public string GetTotalDiscounts()
+        private void CalculatePrice()
         {
-            return TotalDiscount == 0 ? Discounts.NoDiscountsApplied : string.Format(Discounts.DiscountsApplied, TotalDiscount);
+            var subTotal = 0;
+            var totalDiscount = 0;
+
+            // group the items in basket by SKUcode.
+            var groupedProductList = _basket.GroupBy(u => u.Sku).Select(grp => grp.ToList()).ToList();
+
+            foreach (var productGroup in groupedProductList)
+            {
+                // if the item special offer is available
+                if (productGroup.Any(x => x.SpecialOffer.IsAvailable))
+                {
+                    var quantity = productGroup.First().SpecialOffer.Quantity;
+                    var discount = productGroup.First().SpecialOffer.Discount;
+
+                    //  then Group them by the quantity
+                    totalDiscount += productGroup.SplitItems(quantity)
+                        .Where(itemsToCalculate => itemsToCalculate.Count() == quantity)
+                        .Sum(itemsToCalculate => discount);
+                }
+
+                // total up the items.
+                subTotal += productGroup.Sum(item => item.UnitPrice);
+            }
+
+            TotalDiscount = totalDiscount;
+            SubTotal = subTotal;
         }
     }
 }

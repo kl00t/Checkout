@@ -1,7 +1,5 @@
 ﻿namespace Checkout.Data
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Product repository interface definition.
     /// </summary>

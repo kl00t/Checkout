@@ -1,8 +1,15 @@
 ﻿namespace Checkout.Data
 {
+    /// <summary>
+    /// Products that are scanned at the checkout.
+    /// </summary>
+    /// <seealso cref="Checkout.Data.IProduct" />
     public class Product : IProduct
     {
-		public Product()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Product"/> class.
+        /// </summary>
+        public Product()
 		{
 			SpecialOffer = new SpecialOffer();
 		}

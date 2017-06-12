@@ -1,5 +1,8 @@
 ﻿namespace Checkout.Data
 {
+    /// <summary>
+    /// Product interface definition.
+    /// </summary>
     public interface IProduct
     {
         /// <summary>

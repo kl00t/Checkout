@@ -2,9 +2,15 @@
 {
     using NUnit.Framework;
 
+    /// <summary>
+    /// Product Repository Tests.
+    /// </summary>
     [TestFixture]
     public class ProductRepositoryTests
     {
+        /// <summary>
+        /// The product repository.
+        /// </summary>
         private ProductRepository _productRepository;
 
         [SetUp]
