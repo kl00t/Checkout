@@ -2,8 +2,9 @@
 {
     using Data;
 	using System.Collections.Generic;
+    using System.Linq;
 
-	/// <summary>
+    /// <summary>
 	/// Checkout core class.
 	/// </summary>
 	public class Checkout : ICheckout
@@ -48,11 +49,40 @@
         /// </returns>
         public int GetTotalPrice()
         {
-			var subTotal = 0;
-			foreach(var item in _basket)
-			{
-				subTotal += item.UnitPrice;
-			}
+            var subTotal = 0;
+
+            // 1) Group the items in basket by SKUcode.
+            var groupedProductList = _basket
+                .GroupBy(u => u.Sku)
+                .Select(grp => grp.ToList())
+                .ToList();
+
+            foreach (var productGroup in groupedProductList)
+            {
+                // 2) if the item special offer is available
+                if (productGroup.Any(x => x.SpecialOffer.IsAvailable))
+                {
+                    var quantity = productGroup.First().SpecialOffer.Quantity;
+                    var discount = productGroup.First().SpecialOffer.Discount;
+
+                    // 3) then Group them by the quantity
+                    // 4) apply the discount at the end.
+
+                    // total up the items.
+                    foreach (var item in productGroup)
+                    {
+                        subTotal += item.UnitPrice;
+                    }
+                }
+                else
+                {
+                    // no special offer on items so just total up the items.
+                    foreach (var item in productGroup)
+                    {
+                        subTotal += item.UnitPrice;
+                    }
+                }
+            }
 
 			TotalPrice = subTotal;
 			return TotalPrice;
