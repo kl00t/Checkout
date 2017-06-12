@@ -32,7 +32,7 @@
                 .Returns(new Product
                 {
                     Sku = "A",
-                    UnitPrice = 50,
+                    UnitPrice = 50m,
                     Description = "Pineapple",
                     SpecialOffer = new SpecialOffer
                     {
@@ -47,7 +47,7 @@
                     new Product
                     {
                         Sku = "B",
-                        UnitPrice = 30,
+                        UnitPrice = 30m,
                         Description = "Mango",
                         SpecialOffer = new SpecialOffer
                         {
@@ -62,7 +62,7 @@
                     new Product
                     {
                         Sku = "C",
-                        UnitPrice = 20,
+                        UnitPrice = 20m,
                         Description = "Kiwi",
                         SpecialOffer = new SpecialOffer
                         {
@@ -75,11 +75,26 @@
                     new Product
                     {
                         Sku = "D",
-                        UnitPrice = 15,
+                        UnitPrice = 15m,
                         Description = "Melon",
                         SpecialOffer = new SpecialOffer
                         {
                             IsAvailable = false
+                        }
+                    });
+
+            _mockProductRepository.Setup(x => x.GetProductBySkuCode("E"))
+                .Returns(
+                    new Product
+                    {
+                        Sku = "E",
+                        UnitPrice = 9.99m,
+                        Description = "Banana",
+                        SpecialOffer = new SpecialOffer
+                        {
+                            IsAvailable = true,
+                            Quantity = 3,
+                            Discount = 9.99m
                         }
                     });
 
@@ -341,6 +356,25 @@
             _checkout.Scan("A");
             _checkout.GetTotalPrice();
             Assert.AreEqual("You saved £20 on your shopping today.", _checkout.GetTotalDiscounts());
+        }
+
+        [Test]
+        public void VerifyDecimalDiscountTotalPriceIsCorrect()
+        {
+            _checkout.Scan("E");
+            _checkout.Scan("E");
+            _checkout.Scan("E");
+            Assert.AreEqual(19.98m, _checkout.GetTotalPrice());
+        }
+
+        [Test]
+        public void VerifyDecimalDiscountTotalDiscountsApplied()
+        {
+            _checkout.Scan("E");
+            _checkout.Scan("E");
+            _checkout.Scan("E");
+            _checkout.GetTotalPrice();
+            Assert.AreEqual("You saved £9.99 on your shopping today.", _checkout.GetTotalDiscounts());
         }
     }
 }

@@ -66,7 +66,7 @@
         /// <returns>
         /// Returns the total price as a whole number.
         /// </returns>
-        public int GetTotalPrice()
+        public decimal GetTotalPrice()
         {
             CalculatePrice();
             TotalPrice = SubTotal - TotalDiscount;
@@ -81,7 +81,7 @@
         /// </returns>
         public string GetTotalDiscounts()
         {
-            return TotalDiscount == 0 ? Discounts.NoDiscountsApplied : string.Format(Discounts.DiscountsApplied, TotalDiscount);
+            return TotalDiscount == 0 ? Discounts.NoDiscountsApplied : string.Format(Discounts.DiscountsApplied, TotalDiscount.ToString("#.##"));
         }
 
         /// <summary>
@@ -90,7 +90,7 @@
         /// <value>
         /// The total price.
         /// </value>
-        public int TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the total discount.
@@ -98,7 +98,7 @@
         /// <value>
         /// The total discount.
         /// </value>
-        public int TotalDiscount { get; set; }
+        public decimal TotalDiscount { get; set; }
 
         /// <summary>
         /// Gets or sets the sub total.
@@ -106,15 +106,15 @@
         /// <value>
         /// The sub total.
         /// </value>
-        public int SubTotal { get; set; }
+        public decimal SubTotal { get; set; }
 
         /// <summary>
         /// Method that calculates the price.
         /// </summary>
         private void CalculatePrice()
         {
-            var subTotal = 0;
-            var totalDiscount = 0;
+            var subTotal = 0.0m;
+            var totalDiscount = 0.0m;
 
             // group the items in basket by SKUcode.
             var groupedProductList = _basket.GroupBy(u => u.Sku).Select(grp => grp.ToList()).ToList();

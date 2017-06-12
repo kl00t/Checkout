@@ -28,6 +28,6 @@
         /// <value>
         /// The discount applied to the total items.
         /// </value>
-        public int Discount { get; set; }
+        public decimal Discount { get; set; }
 	}
 }

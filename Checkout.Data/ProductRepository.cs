@@ -86,7 +86,7 @@
         /// <returns>
         /// Returns the product unit price by the sku code.
         /// </returns>
-        public int GetProductUnitPrice(string skuCode)
+        public decimal GetProductUnitPrice(string skuCode)
         {
             return GetProductBySkuCode(skuCode).UnitPrice;
         }

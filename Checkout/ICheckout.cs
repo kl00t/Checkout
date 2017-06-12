@@ -21,7 +21,7 @@
         /// Gets the total price.
         /// </summary>
         /// <returns>Returns the total price as a whole number.</returns>
-        int GetTotalPrice();
+        decimal GetTotalPrice();
 
         /// <summary>
         /// Gets the total discounts.
