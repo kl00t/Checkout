@@ -1,4 +1,4 @@
-﻿The approach I made for this exercise was to use the TDD approach using a cycle of Red-Green-Refactor. I firstly wrote my unit test scenario and developed code based upon the criteria that I am testing, in this case the result of GetTotalPrice.
+The approach I made for this exercise was to use the TDD approach using a cycle of Red-Green-Refactor. I firstly wrote my unit test scenario and developed code based upon the criteria that I am testing, in this case the result of GetTotalPrice.
 
 Obviously, the first step I took was to create a class library containing a Checkout class and a Checkout.Tests project. I took the opportunity to add the NUnit test package as I am familiar with this Nuget package. I create the interface as described in the instructions and chose to implement this in my checkout class.
 
