@@ -44,9 +44,19 @@
             _basket.Add(_productRepository.GetProductBySkuCode(item));
         }
 
+        /// <summary>
+        /// Cancels the scanned item.
+        /// </summary>
+        /// <param name="item">The item.</param>
         public void CancelScan(string item)
         {
-            throw new System.NotImplementedException();
+            if (string.IsNullOrEmpty(item))
+            {
+                // check condition and return early.
+                return;
+            }
+
+            _basket.Remove(_productRepository.GetProductBySkuCode(item));
         }
 
         /// <summary>
