@@ -170,7 +170,6 @@
         }
 
         [Test]
-        [Ignore]
         public void VerifyThatDiscountIsAppliedMultipleTimesWithSameProduct()
         {
             _checkout.Scan("A");
@@ -183,7 +182,6 @@
         }
 
         [Test]
-        [Ignore]
         public void VerifyThatDiscountIsAppliedMultipleTimesWithMultipleProducts()
         {
             _checkout.Scan("A");
@@ -197,6 +195,14 @@
             _checkout.Scan("B");
             _checkout.Scan("B");
             Assert.AreEqual(350, _checkout.GetTotalPrice());
+        }
+
+        [Test]
+        public void VerifyThatDiscountedItemsDoesNotTriggerDiscount()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            Assert.AreEqual(100, _checkout.GetTotalPrice());
         }
     }
 }

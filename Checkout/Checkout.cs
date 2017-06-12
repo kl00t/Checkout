@@ -3,6 +3,7 @@
     using Data;
 	using System.Collections.Generic;
     using System.Linq;
+    using Extensions;
 
     /// <summary>
 	/// Checkout core class.
@@ -66,13 +67,14 @@
                     var discount = productGroup.First().SpecialOffer.Discount;
 
                     //  then Group them by the quantity
-                    var itemsToCalculate = productGroup.Take(quantity);
-
-                    // if items matches the quantity for discount then apply discount.
-                    if (itemsToCalculate.Count() == quantity)
+                    foreach (var itemsToCalculate in productGroup.SplitItems(quantity))
                     {
-                        // apply the discount
-                        totalDiscount += discount;
+                        // if items matches the quantity for discount then apply discount.
+                        if (itemsToCalculate.Count() == quantity)
+                        {
+                            // apply the discount
+                            totalDiscount += discount;
+                        }
                     }
                 }
 

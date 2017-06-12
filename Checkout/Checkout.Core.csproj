@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Checkout.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="ICheckout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
