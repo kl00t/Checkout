@@ -7,6 +7,7 @@
     /// Custom exception returning invalid product.
     /// </summary>
     /// <seealso cref="System.Exception" />
+    [Serializable]
     public class InvalidProductException : Exception
     {
         /// <summary>
