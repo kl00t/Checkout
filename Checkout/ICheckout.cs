@@ -16,5 +16,11 @@
         /// </summary>
         /// <returns>Returns the total price as a whole number.</returns>
         int GetTotalPrice();
+
+        /// <summary>
+        /// Gets the total discounts.
+        /// </summary>
+        /// <returns>Returns the total discounts message.</returns>
+        string GetTotalDiscounts();
     }
 }

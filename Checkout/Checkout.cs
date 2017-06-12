@@ -118,5 +118,9 @@
         public int Discount { get; set; }
 
 
+        public string GetTotalDiscounts()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
