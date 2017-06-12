@@ -19,7 +19,7 @@
         /// <value>
         /// The unit price.
         /// </value>
-        int UnitPrice { get; set; }
+        decimal UnitPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the product description.

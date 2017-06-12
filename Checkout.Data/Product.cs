@@ -28,7 +28,7 @@
 		/// <value>
 		/// The unit price.
 		/// </value>
-		public int UnitPrice { get; set; }
+		public decimal UnitPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the product description.

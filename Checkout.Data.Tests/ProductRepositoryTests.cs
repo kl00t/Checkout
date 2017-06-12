@@ -26,7 +26,7 @@
                 new Product
                 {
                     Sku = "A",
-                    UnitPrice = 77,
+                    UnitPrice = 7.79m,
                     Description = "Orange",
 					SpecialOffer = new SpecialOffer
 					{
@@ -37,7 +37,7 @@
             var product = _productRepository.GetProductBySkuCode("A");
 
             Assert.AreEqual("A", product.Sku);
-            Assert.AreEqual(77, product.UnitPrice);
+            Assert.AreEqual(7.79m, product.UnitPrice);
             Assert.AreEqual("Orange", product.Description);
         }
 
@@ -48,7 +48,7 @@
             new Product
             {
                 Sku = "Y",
-                UnitPrice = 88,
+                UnitPrice = 8m,
                 Description = "Pineapple",
 				SpecialOffer = new SpecialOffer
 				{
@@ -56,7 +56,7 @@
 				}
 			});
 
-            Assert.AreEqual(88, _productRepository.GetProductUnitPrice("Y"));
+            Assert.AreEqual(8m, _productRepository.GetProductUnitPrice("Y"));
         }
     }
 }
