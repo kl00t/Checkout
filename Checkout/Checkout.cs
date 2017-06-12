@@ -44,6 +44,11 @@
             _basket.Add(_productRepository.GetProductBySkuCode(item));
         }
 
+        public void CancelScan(string item)
+        {
+            throw new System.NotImplementedException();
+        }
+
         /// <summary>
         /// Gets the total price.
         /// </summary>
@@ -101,5 +106,7 @@
         /// The total discount.
         /// </value>
         public int Discount { get; set; }
+
+
     }
 }

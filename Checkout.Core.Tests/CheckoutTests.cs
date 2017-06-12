@@ -204,5 +204,22 @@
             _checkout.Scan("A");
             Assert.AreEqual(100, _checkout.GetTotalPrice());
         }
+
+        [Test]
+        [Ignore("Ignore until code is implemented.")]
+        public void VerifyThatScannedItemCancelHasNoEffectOnEmptyBasket()
+        {
+            _checkout.CancelScan("A");
+            Assert.AreEqual(0, _checkout.GetTotalPrice());
+        }
+
+        [Test]
+        [Ignore("Ignore until code is implemented.")]
+        public void VerifyThatScannedItemCanBeCancelled()
+        {
+            _checkout.CancelScan("A");
+            _checkout.CancelScan("A");
+            Assert.AreEqual(0, _checkout.GetTotalPrice());
+        }
     }
 }
