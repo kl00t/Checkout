@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Instructions.txt" />
+    <Content Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

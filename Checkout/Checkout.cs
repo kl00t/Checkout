@@ -108,8 +108,6 @@
         /// </value>
         public int SubTotal { get; set; }
 
-
-
         /// <summary>
         /// Method that calculates the price.
         /// </summary>
