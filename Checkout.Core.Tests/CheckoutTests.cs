@@ -228,31 +228,31 @@
         }
 
         [Test]
-        [Ignore]
         public void VerifyTotalDiscountsApplied()
         {
             _checkout.Scan("A");
             _checkout.Scan("A");
             _checkout.Scan("A");
-            Assert.AreEqual(20, _checkout.Discount);
+            Assert.AreEqual(130, _checkout.GetTotalPrice());
+            Assert.AreEqual(20, _checkout.TotalDiscount);
         }
 
         [Test]
-        [Ignore]
         public void VerifyTotalDiscountsNotAppliedMessage()
         {
             _checkout.Scan("A");
             _checkout.Scan("A");
+            _checkout.GetTotalPrice();
             Assert.AreEqual("You did not save any money on your shopping today.", _checkout.GetTotalDiscounts());
         }
 
         [Test]
-        [Ignore]
         public void VerifyTotalDiscountsAppliedMessage()
         {
             _checkout.Scan("A");
             _checkout.Scan("A");
             _checkout.Scan("A");
+            _checkout.GetTotalPrice();
             Assert.AreEqual("You saved £20 on your shopping today.", _checkout.GetTotalDiscounts());
         }
     }

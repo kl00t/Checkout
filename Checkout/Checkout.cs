@@ -1,5 +1,7 @@
 ﻿namespace Checkout.Core
 {
+
+    using System;
     using Data;
 	using System.Collections.Generic;
     using System.Linq;
@@ -97,8 +99,14 @@
                 subTotal += productGroup.Sum(item => item.UnitPrice);
             }
 
+            TotalDiscount = totalDiscount;
             TotalPrice = subTotal - totalDiscount;
 			return TotalPrice;
+        }
+
+        private void CalculatePrice()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -115,12 +123,17 @@
         /// <value>
         /// The total discount.
         /// </value>
-        public int Discount { get; set; }
+        public int TotalDiscount { get; set; }
 
-
+        /// <summary>
+        /// Gets the total discounts.
+        /// </summary>
+        /// <returns>
+        /// Returns the total discounts message.
+        /// </returns>
         public string GetTotalDiscounts()
         {
-            throw new System.NotImplementedException();
+            return TotalDiscount == 0 ? Discounts.NoDiscountsApplied : string.Format(Discounts.DiscountsApplied, TotalDiscount);
         }
     }
 }
