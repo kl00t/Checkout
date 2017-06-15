@@ -27,6 +27,6 @@
         /// <value>
         /// The discount applied to the total items.
         /// </value>
-        int Discount { get; set; }
+        decimal Discount { get; set; }
 	}
 }

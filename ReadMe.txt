@@ -13,3 +13,5 @@ Finally, I added a SubTotal and TotalDiscounts properties to separate the values
 The CancelScan() was added because in a real world scenario mistakes can be made and scanned items would needed to be taken off the checkout line. This was handled very easily becauase I used the TDD approach and I was able to write some simple tests to allow this to be tested and developed.
 
 A final refactoring was done to remove obsolete or unused code and also to apply Microsoft code analysis recommendations. My code is fully documented with XML comments which can be used to export to an external file for help documentation.
+
+Refactor the pricing from whole number integers and added further tests. Pricing in a real work scenario would involve pence as well as pounds.

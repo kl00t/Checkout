@@ -40,6 +40,6 @@
         /// </summary>
         /// <param name="skuCode">The sku code.</param>
         /// <returns>Returns the product unit price by the sku code.</returns>
-        int GetProductUnitPrice(string skuCode);
+        decimal GetProductUnitPrice(string skuCode);
     }
 }
