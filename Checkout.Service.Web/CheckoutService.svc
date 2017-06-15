@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Checkout.Service.Web.CheckoutService" CodeBehind="CheckoutService.svc.cs" Factory="Ninject.Extensions.Wcf.NinjectServiceHostFactory" %>
