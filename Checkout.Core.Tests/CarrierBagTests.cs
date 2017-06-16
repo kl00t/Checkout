@@ -1,13 +1,17 @@
 ﻿namespace Checkout.Core.Tests
 {
 	using NUnit.Framework;
+	using System;
 
 	/// <summary>
-	/// Test fixture for checkout.
+	/// Test fixture for carrier bag.
 	/// </summary>
 	[TestFixture]
 	public class CarrierBagTests
 	{
+		/// <summary>
+		/// Carrier bag instance.
+		/// </summary>
 		private CarrierBag _carrierBag;
 
 		/// <summary>
@@ -43,7 +47,12 @@
 			Assert.AreEqual(0.10m, _carrierBag.CalculateBagCharge(6));
 		}
 
-		[Ignore]
+		[Test]
+		public void VerifyThat10ItemsApplies2BagCharges()
+		{
+			Assert.AreEqual(0.10m, _carrierBag.CalculateBagCharge(10));
+		}
+
 		[Test]
 		[TestCase(0, "0.00")]
 		[TestCase(1, "0.05")]
@@ -58,7 +67,7 @@
 		[TestCase(11, "0.15")]
 		public void VerifyCarrierBagChargeCalculation(int numberOfIitems, string expectedCharge)
 		{
-			var expectedResult = System.Convert.ToDecimal(expectedCharge);
+			var expectedResult = Convert.ToDecimal(expectedCharge);
 			Assert.AreEqual(expectedResult, _carrierBag.CalculateBagCharge(numberOfIitems));
 		}
 	}

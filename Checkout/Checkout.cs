@@ -16,6 +16,9 @@
         /// </summary>
         private readonly IProductRepository _productRepository;
 
+		/// <summary>
+		/// The carrier bag instance.
+		/// </summary>
 		private readonly ICarrierBag _carrierBag;
 
 		/// <summary>
@@ -75,7 +78,8 @@
 
 			var bagCharge = _carrierBag.CalculateBagCharge(_basket.Count);
 
-            TotalPrice = (SubTotal + bagCharge) - TotalDiscount;
+			TotalBagCharge = bagCharge;
+            TotalPrice = (SubTotal + TotalBagCharge) - TotalDiscount;
             return TotalPrice;
         }
 

@@ -1,5 +1,8 @@
 ﻿namespace Checkout.Core
 {
+	/// <summary>
+	/// Carrier Bag class.
+	/// </summary>
 	public class CarrierBag : ICarrierBag
 	{
 		private readonly decimal BagPrice = 0.05m;
@@ -8,7 +11,6 @@
 
 		public CarrierBag()
 		{
-			
 		}
 
 		public decimal Charge { get; set; }
@@ -20,13 +22,8 @@
 				return Charge = 0;
 			}
 
-			if (numberOfItems == BagCapacity)
-			{
-				return Charge = BagPrice;
-			}
-
 			var bagsRequired = (numberOfItems / BagCapacity) + 1;
-
+		
 			var bagCharge = bagsRequired * BagPrice;
 			return Charge = bagCharge;
 		}

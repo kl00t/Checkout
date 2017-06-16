@@ -382,34 +382,31 @@
         }
 
 		[Test]
-		[Ignore]
 		public void VerifyThat1ScannedItemChargesFor1Bag()
 		{
-			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(1);
+			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(0.05m);
 
 			_checkout.Scan("D");
 			Assert.AreEqual(15.05m, _checkout.GetTotalPrice());
 		}
 
 		[Test]
-		[Ignore]
 		public void VerifyThat5ItemsChargesFor1Bag()
 		{
-			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(1);
+			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(0.05m);
 
 			_checkout.Scan("D");
 			_checkout.Scan("D");
 			_checkout.Scan("D");
 			_checkout.Scan("D");
 			_checkout.Scan("D");
-			Assert.AreEqual(15.05m, _checkout.GetTotalPrice());
+			Assert.AreEqual(75.05m, _checkout.GetTotalPrice());
 		}
 
 		[Test]
-		[Ignore]
 		public void VerifyThat6ItemsChargesFor2Bags()
 		{
-			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(2);
+			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(0.10m);
 
 			_checkout.Scan("D");
 			_checkout.Scan("D");
@@ -417,7 +414,7 @@
 			_checkout.Scan("D");
 			_checkout.Scan("D");
 			_checkout.Scan("D");
-			Assert.AreEqual(15.10m, _checkout.GetTotalPrice());
+			Assert.AreEqual(90.10m, _checkout.GetTotalPrice());
 		}
     }
 }
