@@ -16,6 +16,8 @@
         /// </summary>
         private readonly IProductRepository _productRepository;
 
+		private readonly ICarrierBag _carrierBag;
+
 		/// <summary>
 		/// The basket of items.
 		/// </summary>
@@ -24,9 +26,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Checkout"/> class.
         /// </summary>
-        public Checkout(IProductRepository productRepository)
+        public Checkout(IProductRepository productRepository, ICarrierBag carrierBag)
         {
             _productRepository = productRepository;
+			_carrierBag = carrierBag;
 			_basket = new List<Product>();
         }
 
@@ -69,7 +72,10 @@
         public decimal GetTotalPrice()
         {
             CalculatePrice();
-            TotalPrice = SubTotal - TotalDiscount;
+
+			var bagCharge = _carrierBag.CalculateBagCharge(_basket.Count);
+
+            TotalPrice = (SubTotal + bagCharge) - TotalDiscount;
             return TotalPrice;
         }
 
@@ -99,6 +105,14 @@
         /// The total discount.
         /// </value>
         public decimal TotalDiscount { get; set; }
+
+		/// <summary>
+		/// Gets or sets the total bag charges.
+		/// </summary>
+		/// <value>
+		/// The total bag charges.
+		/// </value>
+		public decimal TotalBagCharge { get; set; }
 
         /// <summary>
         /// Gets or sets the sub total.

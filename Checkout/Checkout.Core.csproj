@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarrierBag.cs" />
     <Compile Include="Checkout.cs" />
+    <Compile Include="ICarrierBag.cs" />
     <Compile Include="Resources\Discounts.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

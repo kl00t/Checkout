@@ -20,6 +20,8 @@
         /// </summary>
         private Mock<IProductRepository> _mockProductRepository;
 
+		private Mock<ICarrierBag> _mockCarrierBag;
+
         /// <summary>
         /// Called before each test is run.
         /// </summary>
@@ -27,6 +29,8 @@
         public void SetUp()
         {
             _mockProductRepository = new Mock<IProductRepository>();
+			_mockCarrierBag = new Mock<ICarrierBag>();
+			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(0);
 
             _mockProductRepository.Setup(x => x.GetProductBySkuCode("A"))
                 .Returns(new Product
@@ -98,7 +102,7 @@
                         }
                     });
 
-            _checkout = new Checkout(_mockProductRepository.Object);
+            _checkout = new Checkout(_mockProductRepository.Object, _mockCarrierBag.Object);
         }
 
         /// <summary>
@@ -376,5 +380,44 @@
             _checkout.GetTotalPrice();
             Assert.AreEqual("You saved £9.99 on your shopping today.", _checkout.GetTotalDiscounts());
         }
+
+		[Test]
+		[Ignore]
+		public void VerifyThat1ScannedItemChargesFor1Bag()
+		{
+			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(1);
+
+			_checkout.Scan("D");
+			Assert.AreEqual(15.05m, _checkout.GetTotalPrice());
+		}
+
+		[Test]
+		[Ignore]
+		public void VerifyThat5ItemsChargesFor1Bag()
+		{
+			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(1);
+
+			_checkout.Scan("D");
+			_checkout.Scan("D");
+			_checkout.Scan("D");
+			_checkout.Scan("D");
+			_checkout.Scan("D");
+			Assert.AreEqual(15.05m, _checkout.GetTotalPrice());
+		}
+
+		[Test]
+		[Ignore]
+		public void VerifyThat6ItemsChargesFor2Bags()
+		{
+			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(2);
+
+			_checkout.Scan("D");
+			_checkout.Scan("D");
+			_checkout.Scan("D");
+			_checkout.Scan("D");
+			_checkout.Scan("D");
+			_checkout.Scan("D");
+			Assert.AreEqual(15.10m, _checkout.GetTotalPrice());
+		}
     }
 }
