@@ -7,12 +7,13 @@ namespace Checkout.Core
 	/// </summary>
 	public class CarrierBag : ICarrierBag
 	{
-		private readonly decimal BagPrice = 0.05m;
+		private readonly decimal BagPrice = CheckoutSettings.Default.CarrierBagPrice;
 
-		private readonly int BagCapacity = 5;
+		private readonly int BagCapacity = CheckoutSettings.Default.CarrierBagCapacity;
 
 		public CarrierBag()
 		{
+			
 		}
 
 		public decimal Charge { get; set; }

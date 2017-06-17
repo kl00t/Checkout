@@ -42,6 +42,12 @@
   <ItemGroup>
     <Compile Include="CarrierBag.cs" />
     <Compile Include="Checkout.cs" />
+    <Compile Include="CheckoutSettings.cs" />
+    <Compile Include="CheckoutSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>CheckoutSettings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ICarrierBag.cs" />
     <Compile Include="Resources\Discounts.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -63,6 +69,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Discounts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="CheckoutSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>CheckoutSettings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
