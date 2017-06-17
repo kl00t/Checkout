@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Core", "Checkout\Checkout.Core.csproj", "{D33D46FA-30BE-4001-A4BD-D5C59EFF2700}"
 EndProject
@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadMe", "ReadMe", "{4C49C5
 		ReadMe.txt = ReadMe.txt
 		Scenario.txt = Scenario.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.BDD.Tests", "Checkout.BDD.Tests\Checkout.BDD.Tests.csproj", "{8875C4BC-5DA5-4EF4-865B-78C1725973B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{30A71F30-AFD3-49D2-8A04-AC519EE6120F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30A71F30-AFD3-49D2-8A04-AC519EE6120F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30A71F30-AFD3-49D2-8A04-AC519EE6120F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8875C4BC-5DA5-4EF4-865B-78C1725973B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8875C4BC-5DA5-4EF4-865B-78C1725973B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8875C4BC-5DA5-4EF4-865B-78C1725973B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8875C4BC-5DA5-4EF4-865B-78C1725973B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
