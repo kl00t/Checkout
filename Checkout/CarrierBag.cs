@@ -7,7 +7,7 @@ namespace Checkout.Core
 	/// </summary>
 	public class CarrierBag : ICarrierBag
 	{
-		private readonly decimal BagPrice = Properties.Settings.Default
+		private readonly decimal BagPrice = 0.05m;
 
 		private readonly int BagCapacity = 5;
 
