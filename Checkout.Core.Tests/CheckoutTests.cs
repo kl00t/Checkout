@@ -16,11 +16,14 @@
         private Checkout _checkout;
 
         /// <summary>
-        /// The product repository.
+        /// The mock product repository.
         /// </summary>
         private Mock<IProductRepository> _mockProductRepository;
 
-		private Mock<ICarrierBag> _mockCarrierBag;
+        /// <summary>
+        /// The mock carrier bag.
+        /// </summary>
+        private Mock<ICarrierBag> _mockCarrierBag;
 
         /// <summary>
         /// Called before each test is run.

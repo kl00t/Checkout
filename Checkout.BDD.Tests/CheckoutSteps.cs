@@ -1,12 +1,15 @@
-﻿using Checkout.Data;
-using Checkout.Core;
-using TechTalk.SpecFlow;
-using Moq;
-using NUnit.Framework;
-using System;
-
-namespace Checkout.BDD.Tests
+﻿namespace Checkout.BDD.Tests
 {
+    using Checkout.Data;
+    using Checkout.Core;
+    using TechTalk.SpecFlow;
+    using Moq;
+    using NUnit.Framework;
+    using System;
+
+    /// <summary>
+    /// Checkout BDD steps file.
+    /// </summary>
     [Binding]
     public class CheckoutSteps
     {
@@ -15,11 +18,20 @@ namespace Checkout.BDD.Tests
 		/// </summary>
 		private static Core.Checkout _checkout;
 
-		private static Mock<IProductRepository> _mockProductRepository;
+        /// <summary>
+        /// The mock product repository
+        /// </summary>
+        private static Mock<IProductRepository> _mockProductRepository;
 
-		private static Mock<ICarrierBag> _mockCarrierBag;
+        /// <summary>
+        /// The mock carrier bag
+        /// </summary>
+        private static Mock<ICarrierBag> _mockCarrierBag;
 
-		[BeforeScenario]
+        /// <summary>
+        /// Test runs befores the scenario.
+        /// </summary>
+        [BeforeScenario]
 		public void BeforeScenario()
 		{
 			_mockProductRepository = new Mock<IProductRepository>();
@@ -41,32 +53,49 @@ namespace Checkout.BDD.Tests
 				});
 		}
 
-		[AfterFeature]
+        /// <summary>
+        /// Runs after the feature.
+        /// </summary>
+        [AfterFeature]
 		public static void AfterFeature()
 		{
 			// run after the test have run
 		}
 
-		[Given(@"I have a checkout system")]
+        /// <summary>
+        /// Givens the i have a checkout system.
+        /// </summary>
+        [Given(@"I have a checkout system")]
         public static void GivenIHaveACheckoutSystem()
         {
 			_checkout = new Core.Checkout(_mockProductRepository.Object, _mockCarrierBag.Object);
         }
 
-		[Given(@"I scan an (.*) using the checkout")]
+        /// <summary>
+        /// Givens the i scan an using the checkout.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        [Given(@"I scan an (.*) using the checkout")]
 		public void GivenIScanAnUsingTheCheckout(string item)
 		{
 			_checkout.Scan(item);
 		}
 
-		[When(@"I calculate the total price")]
+        /// <summary>
+        /// Whens the i calculate the total price.
+        /// </summary>
+        [When(@"I calculate the total price")]
         public void WhenICalculateTheTotalPrice()
         {
 			var totalPrice = _checkout.GetTotalPrice();
 			ScenarioContext.Current.Add("TotalPrice", totalPrice);
 		}
 
-		[Then(@"the (.*) should be correct")]
+        /// <summary>
+        /// Thens the should be correct.
+        /// </summary>
+        /// <param name="totalprice">The totalprice.</param>
+        [Then(@"the (.*) should be correct")]
 		public void ThenTheShouldBeCorrect(string totalprice)
 		{
 			Assert.AreEqual(Convert.ToDecimal(totalprice), _checkout.TotalPrice);

@@ -5,7 +5,13 @@
 	/// </summary>
 	public interface ICarrierBag
 	{
-		decimal Charge { get; set; }
+        /// <summary>
+        /// Gets or sets the carrier bag charge.
+        /// </summary>
+        /// <value>
+        /// The carrier bag charge.
+        /// </value>
+        decimal Charge { get; set; }
 
 		/// <summary>
 		/// Calculate how much the charge is for bags based on the number of items.

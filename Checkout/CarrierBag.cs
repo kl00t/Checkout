@@ -7,32 +7,47 @@ namespace Checkout.Core
 	/// </summary>
 	public class CarrierBag : ICarrierBag
 	{
-		private readonly decimal BagPrice = CheckoutSettings.Default.CarrierBagPrice;
+        /// <summary>
+        /// The bag price.
+        /// </summary>
+        private readonly decimal _bagPrice = CheckoutSettings.Default.CarrierBagPrice;
 
-		private readonly int BagCapacity = CheckoutSettings.Default.CarrierBagCapacity;
+        /// <summary>
+        /// The bag capacity.
+        /// </summary>
+        private readonly int _bagCapacity = CheckoutSettings.Default.CarrierBagCapacity;
 
-		public CarrierBag()
-		{
-			
-		}
+        /// <summary>
+        /// Gets or sets the carrier bag charge.
+        /// </summary>
+        /// <value>
+        /// The carrier bag charge.
+        /// </value>
+        public decimal Charge { get; set; }
 
-		public decimal Charge { get; set; }
-
-		public decimal CalculateBagCharge(int numberOfItems)
+        /// <summary>
+        /// Calculate how much the charge is for bags based on the number of items.
+        /// </summary>
+        /// <param name="numberOfItems">The number of items scanned.</param>
+        /// <returns>
+        /// Returns the calculation for the number of bags.
+        /// </returns>
+        public decimal CalculateBagCharge(int numberOfItems)
 		{
 			if (numberOfItems <= 0)
 			{
 				return Charge = 0;
 			}
 
-			var bagsRequired = Math.DivRem(numberOfItems, BagCapacity, out int remainder);
+		    int remainder;
+			var bagsRequired = Math.DivRem(numberOfItems, _bagCapacity, out remainder);
 			if (remainder > 0)
 			{
 				// bag overlflow, so add another bag
 				bagsRequired += 1;
 			}
 
-			var bagCharge = bagsRequired * BagPrice;
+			var bagCharge = bagsRequired * _bagPrice;
 			return Charge = bagCharge;
 		}
 	}

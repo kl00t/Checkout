@@ -13,12 +13,18 @@
         /// </summary>
         private ProductRepository _productRepository;
 
+        /// <summary>
+        /// Sets up the test.
+        /// </summary>
         [SetUp]
         public void SetUp()
         {
             _productRepository = new ProductRepository();
         }
 
+        /// <summary>
+        /// Ensures the that product added is retrieved correctly.
+        /// </summary>
         [Test]
         public void EnsureThatProductAddedIsRetrievedCorrectly()
         {
@@ -41,6 +47,9 @@
             Assert.AreEqual("Orange", product.Description);
         }
 
+        /// <summary>
+        /// Ensures the that product sku code returns correct price.
+        /// </summary>
         [Test]
         public void EnsureThatProductSkuCodeReturnsCorrectPrice()
         {

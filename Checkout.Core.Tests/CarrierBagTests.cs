@@ -23,37 +23,57 @@
 			_carrierBag = new CarrierBag();
 		}
 
-		[Test]
+        /// <summary>
+        /// Verifies the when no items then no bag charge is applied.
+        /// </summary>
+        [Test]
 		public void VerifyWhenNoItemsThenNoBagChargeIsApplied()
 		{
 			Assert.AreEqual(0.0m, _carrierBag.CalculateBagCharge(0));
 		}
 
-		[Test]
+        /// <summary>
+        /// Verifies the that when at least1 item then1 bag charge is applied.
+        /// </summary>
+        [Test]
 		public void VerifyThatWhenAtLeast1ItemThen1BagChargeIsApplied()
 		{
 			Assert.AreEqual(0.05m, _carrierBag.CalculateBagCharge(1));
 		}
 
-		[Test]
+        /// <summary>
+        /// Verifies the that5 items applies single charge.
+        /// </summary>
+        [Test]
 		public void VerifyThat5ItemsAppliesSingleCharge()
 		{
 			Assert.AreEqual(0.05m, _carrierBag.CalculateBagCharge(5));
 		}
 
-		[Test]
+        /// <summary>
+        /// Verifies the that over5 items applies2 charges.
+        /// </summary>
+        [Test]
 		public void VerifyThatOver5ItemsApplies2Charges()
 		{
 			Assert.AreEqual(0.10m, _carrierBag.CalculateBagCharge(6));
 		}
 
-		[Test]
+        /// <summary>
+        /// Verifies the that10 items applies2 bag charges.
+        /// </summary>
+        [Test]
 		public void VerifyThat10ItemsApplies2BagCharges()
 		{
 			Assert.AreEqual(0.10m, _carrierBag.CalculateBagCharge(10));
 		}
 
-		[Test]
+        /// <summary>
+        /// Verifies the carrier bag charge calculation.
+        /// </summary>
+        /// <param name="numberOfIitems">The number of iitems.</param>
+        /// <param name="expectedCharge">The expected charge.</param>
+        [Test]
 		[TestCase(0, "0.00")]
 		[TestCase(1, "0.05")]
 		[TestCase(2, "0.05")]
