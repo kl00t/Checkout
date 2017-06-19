@@ -27,13 +27,15 @@
 		private readonly List<Product> _basket;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Checkout"/> class.
+        /// Initializes a new instance of the <see cref="Checkout" /> class.
         /// </summary>
+        /// <param name="productRepository">The product repository.</param>
+        /// <param name="carrierBag">The carrier bag.</param>
         public Checkout(IProductRepository productRepository, ICarrierBag carrierBag)
         {
             _productRepository = productRepository;
 			_carrierBag = carrierBag;
-			_basket = new List<Product>();
+            _basket = new List<Product>();
         }
 
         /// <summary>

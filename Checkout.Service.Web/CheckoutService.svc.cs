@@ -33,7 +33,7 @@
         /// Scans the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
-        /// <returns></returns>
+        /// <returns>Returns a checkout response.</returns>
         public CheckoutResponse Scan(string item)
         {
             try
@@ -58,7 +58,7 @@
         /// Cancels the scan.
         /// </summary>
         /// <param name="item">The item.</param>
-        /// <returns></returns>
+        /// <returns>Returns the checkout response.</returns>
         public CheckoutResponse CancelScan(string item)
         {
             try
@@ -83,7 +83,7 @@
         /// <summary>
         /// Totals the price.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the total price.</returns>
         public decimal TotalPrice()
         {
             return _checkout.GetTotalPrice();

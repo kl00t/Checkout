@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basket.cs" />
     <Compile Include="CarrierBag.cs" />
     <Compile Include="Checkout.cs" />
     <Compile Include="CheckoutSettings.cs" />
@@ -48,6 +49,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>CheckoutSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="IBasket.cs" />
     <Compile Include="ICarrierBag.cs" />
     <Compile Include="Resources\Discounts.Designer.cs">
       <AutoGen>True</AutoGen>

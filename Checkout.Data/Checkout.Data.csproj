@@ -44,6 +44,7 @@
     <Compile Include="IProduct.cs" />
     <Compile Include="IProductRepository.cs" />
     <Compile Include="ISpecialOffer.cs" />
+    <Compile Include="MockProductRepository.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

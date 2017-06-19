@@ -18,7 +18,8 @@
             Bind<ICheckoutService>().To<CheckoutService>();
             Bind<ICheckout>().To<Checkout>();
             Bind<IProduct>().To<Product>();
-            Bind<IProductRepository>().To<ProductRepository>();
+            Bind<ICarrierBag>().To<CarrierBag>();
+            Bind<IProductRepository>().To<MockProductRepository>();
         }
     }
 }
