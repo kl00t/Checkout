@@ -3,7 +3,7 @@
     /// <summary>
     /// Checkout interface definition.
     /// </summary>
-    interface ICheckout
+    public interface ICheckout
     {
         /// <summary>
         /// Scans the specified item.
