@@ -7,15 +7,35 @@ namespace Checkout.Core
 	/// </summary>
 	public class CarrierBag : ICarrierBag
 	{
-        /// <summary>
-        /// The bag price.
-        /// </summary>
-        private readonly decimal _bagPrice = CheckoutSettings.Default.CarrierBagPrice;
+	    /// <summary>
+	    /// The bag price.
+	    /// </summary>
+	    private readonly decimal _bagPrice;
+
+	    /// <summary>
+	    /// The bag capacity.
+	    /// </summary>
+	    private readonly int _bagCapacity;
 
         /// <summary>
-        /// The bag capacity.
+        /// Initializes a new instance of the <see cref="CarrierBag"/> class.
         /// </summary>
-        private readonly int _bagCapacity = CheckoutSettings.Default.CarrierBagCapacity;
+        public CarrierBag()
+	    {
+	        _bagPrice = _bagPrice = CheckoutSettings.Default.CarrierBagPrice;
+            _bagCapacity = CheckoutSettings.Default.CarrierBagCapacity;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CarrierBag"/> class.
+        /// </summary>
+        /// <param name="bagPrice">The bag price.</param>
+        /// <param name="bagCapacity">The bag capacity.</param>
+        public CarrierBag(decimal bagPrice, int bagCapacity)
+	    {
+	        _bagPrice = bagPrice;
+	        _bagCapacity = bagCapacity;
+	    }
 
         /// <summary>
         /// Gets or sets the carrier bag charge.
@@ -24,6 +44,14 @@ namespace Checkout.Core
         /// The carrier bag charge.
         /// </value>
         public decimal Charge { get; set; }
+
+        /// <summary>
+        /// Gets or sets the bags required.
+        /// </summary>
+        /// <value>
+        /// The bags required.
+        /// </value>
+        public int BagsRequired { get; set; }
 
         /// <summary>
         /// Calculate how much the charge is for bags based on the number of items.
@@ -43,12 +71,12 @@ namespace Checkout.Core
 			var bagsRequired = Math.DivRem(numberOfItems, _bagCapacity, out remainder);
 			if (remainder > 0)
 			{
-				// bag overlflow, so add another bag
+				// bag overflow, so add another bag
 				bagsRequired += 1;
 			}
 
-			var bagCharge = bagsRequired * _bagPrice;
-			return Charge = bagCharge;
+            BagsRequired = bagsRequired;
+			return Charge = BagsRequired * _bagPrice;
 		}
 	}
 }

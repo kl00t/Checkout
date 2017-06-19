@@ -75,10 +75,7 @@
         public decimal GetTotalPrice()
         {
             CalculatePrice();
-
-			var bagCharge = _carrierBag.CalculateBagCharge(_basket.Count);
-
-			TotalBagCharge = bagCharge;
+			TotalBagCharge = _carrierBag.CalculateBagCharge(_basket.Count);
             TotalPrice = (SubTotal + TotalBagCharge) - TotalDiscount;
             return TotalPrice;
         }
