@@ -13,7 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Data.Tests", "Chec
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadMe", "ReadMe", "{4C49C56D-19EC-4571-B875-E84EC2A7CCD3}"
 	ProjectSection(SolutionItems) = preProject
-		ReadMe.txt = ReadMe.txt
 		Scenario.txt = Scenario.txt
 	EndProjectSection
 EndProject
