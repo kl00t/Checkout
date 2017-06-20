@@ -1,6 +1,8 @@
 ﻿namespace Checkout.Data
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Mock Product repository.
@@ -80,41 +82,42 @@
         }
 
         /// <summary>
-        /// Inserts the specified product.
+        /// Gets the by identifier.
         /// </summary>
-        /// <param name="product">The product.</param>
-        public void Insert(Product product)
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// Returns the entity by the id.
+        /// </returns>
+        public Product GetById(string id)
         {
-            _products.Add(product);
+            return _products.FirstOrDefault(x => x.Sku.Equals(id));
         }
 
         /// <summary>
-        /// Updates the specified product.
+        /// Creates the specified entity.
         /// </summary>
-        /// <param name="product">The product.</param>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Update(Product product)
+        /// <param name="entity">The entity.</param>
+        public void Insert(Product entity)
         {
-            throw new System.NotImplementedException();
+            _products.Add(entity);
         }
 
         /// <summary>
-        /// Deletes the specified sku.
+        /// Updates the specified entity.
         /// </summary>
-        /// <param name="sku">The sku.</param>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Delete(string sku)
+        /// <param name="entity">The entity.</param>
+        public void Update(Product entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Saves this instance.
+        /// Deletes the specified entity.
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Save()
+        /// <param name="entity">The entity.</param>
+        public void Delete(Product entity)
         {
-            throw new System.NotImplementedException();
+            _products.Remove(entity);
         }
 
         /// <summary>

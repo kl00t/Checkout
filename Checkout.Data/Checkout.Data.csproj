@@ -43,6 +43,7 @@
     <Compile Include="InvalidProductException.cs" />
     <Compile Include="IProduct.cs" />
     <Compile Include="IProductRepository.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="ISpecialOffer.cs" />
     <Compile Include="MockProductRepository.cs" />
     <Compile Include="Product.cs" />

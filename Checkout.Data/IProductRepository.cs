@@ -3,31 +3,8 @@
     /// <summary>
     /// Product repository interface definition.
     /// </summary>
-    public interface IProductRepository
+    public interface IProductRepository : IRepository<Product, string>
     {
-        /// <summary>
-        /// Inserts the specified product.
-        /// </summary>
-        /// <param name="product">The product.</param>
-        void Insert(Product product);
-
-        /// <summary>
-        /// Updates the specified product.
-        /// </summary>
-        /// <param name="product">The product.</param>
-        void Update(Product product);
-
-        /// <summary>
-        /// Deletes the specified sku.
-        /// </summary>
-        /// <param name="sku">The sku.</param>
-        void Delete(string sku);
-
-        /// <summary>
-        /// Saves this instance.
-        /// </summary>
-        void Save();
-
         /// <summary>
         /// Gets the product by sku code.
         /// </summary>
