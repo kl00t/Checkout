@@ -48,6 +48,29 @@
         }
 
         /// <summary>
+        /// Ensures the that product is removed correctly.
+        /// </summary>
+        [Test]
+        [ExpectedException(typeof(InvalidProductException))]
+        public void EnsureThatProductIsRemovedCorrectly()
+        {
+            _productRepository.Insert(
+                new Product
+                {
+                    Sku = "A",
+                    UnitPrice = 7.79m,
+                    Description = "Orange",
+                    SpecialOffer = new SpecialOffer
+                    {
+                        IsAvailable = false
+                    }
+                });
+
+            _productRepository.Delete(_productRepository.GetProductBySkuCode("A"));
+            _productRepository.GetProductBySkuCode("A");
+        }
+
+        /// <summary>
         /// Ensures the that product sku code returns correct price.
         /// </summary>
         [Test]
