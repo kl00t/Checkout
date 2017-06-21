@@ -2,6 +2,8 @@
 {
     using Core;
     using Data;
+    using Domain.Interfaces;
+    using Domain.Models;
     using Ninject.Modules;
 
     /// <summary>

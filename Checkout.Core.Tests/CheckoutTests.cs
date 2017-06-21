@@ -1,7 +1,9 @@
 ﻿namespace Checkout.Core.Tests
 {
     using Data;
-	using Moq;
+    using Domain.Exceptions;
+    using Domain.Models;
+    using Moq;
 	using NUnit.Framework;
 
     /// <summary>

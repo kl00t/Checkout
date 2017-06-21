@@ -65,6 +65,10 @@
       <Project>{2af520e6-b12e-44eb-b147-a3e34cb8a14d}</Project>
       <Name>Checkout.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Checkout.Domain\Checkout.Domain.csproj">
+      <Project>{976B2B83-E5DA-4DF3-B9EE-D44C975EA9E3}</Project>
+      <Name>Checkout.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Discounts.resx">

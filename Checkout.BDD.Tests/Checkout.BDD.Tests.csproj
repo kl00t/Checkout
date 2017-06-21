@@ -87,6 +87,10 @@
       <Project>{2af520e6-b12e-44eb-b147-a3e34cb8a14d}</Project>
       <Name>Checkout.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Checkout.Domain\Checkout.Domain.csproj">
+      <Project>{976b2b83-e5da-4df3-b9ee-d44c975ea9e3}</Project>
+      <Name>Checkout.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Checkout\Checkout.Core.csproj">
       <Project>{d33d46fa-30be-4001-a4bd-d5c59eff2700}</Project>
       <Name>Checkout.Core</Name>

@@ -1,5 +1,8 @@
 ﻿namespace Checkout.Data.Tests
 {
+
+    using Domain.Exceptions;
+    using Domain.Models;
     using NUnit.Framework;
 
     /// <summary>

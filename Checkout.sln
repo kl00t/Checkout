@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.BDD.Tests", "Check
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Service.Web", "Checkout.Service.Web\Checkout.Service.Web.csproj", "{0622856D-99D1-498E-962C-B4483CE82695}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Domain", "Checkout.Domain\Checkout.Domain.csproj", "{976B2B83-E5DA-4DF3-B9EE-D44C975EA9E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{0622856D-99D1-498E-962C-B4483CE82695}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0622856D-99D1-498E-962C-B4483CE82695}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0622856D-99D1-498E-962C-B4483CE82695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{976B2B83-E5DA-4DF3-B9EE-D44C975EA9E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{976B2B83-E5DA-4DF3-B9EE-D44C975EA9E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{976B2B83-E5DA-4DF3-B9EE-D44C975EA9E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{976B2B83-E5DA-4DF3-B9EE-D44C975EA9E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

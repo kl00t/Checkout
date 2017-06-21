@@ -7,6 +7,7 @@
     using NUnit.Framework;
     using System;
     using System.Linq;
+    using Domain.Models;
 
     /// <summary>
     /// Checkout BDD steps file.

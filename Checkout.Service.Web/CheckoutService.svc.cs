@@ -2,6 +2,7 @@
 {
     using Core;
     using Data;
+    using Domain.Exceptions;
 
     /// <summary>
     /// Checkout WCF Service.

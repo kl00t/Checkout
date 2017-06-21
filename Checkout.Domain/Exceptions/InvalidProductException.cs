@@ -1,4 +1,4 @@
-﻿namespace Checkout.Data
+﻿namespace Checkout.Domain.Exceptions
 {
     using System;
     using System.Runtime.Serialization;

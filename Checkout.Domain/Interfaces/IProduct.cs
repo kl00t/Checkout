@@ -1,5 +1,8 @@
-﻿namespace Checkout.Data
+﻿namespace Checkout.Domain.Interfaces
 {
+
+    using Models;
+
     /// <summary>
     /// Product interface definition.
     /// </summary>

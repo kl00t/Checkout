@@ -1,5 +1,8 @@
 ﻿namespace Checkout.Data
 {
+
+    using Domain.Models;
+
     /// <summary>
     /// Product repository interface definition.
     /// </summary>

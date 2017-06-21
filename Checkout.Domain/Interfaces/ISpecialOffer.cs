@@ -1,4 +1,4 @@
-﻿namespace Checkout.Data
+﻿namespace Checkout.Domain.Interfaces
 {
     /// <summary>
     /// Special Offer interface definition.

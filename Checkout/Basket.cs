@@ -2,11 +2,12 @@
 {
     using System.Collections.Generic;
     using Data;
+    using Domain.Models;
 
     /// <summary>
     /// Basket class.
     /// </summary>
-    /// <seealso cref="Checkout.Core.IBasket" />
+    /// <seealso cref="IBasket" />
     public class Basket : IBasket
     {
         /// <summary>

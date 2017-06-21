@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Data;
+    using Domain.Models;
 
     /// <summary>
     /// Basket interface.

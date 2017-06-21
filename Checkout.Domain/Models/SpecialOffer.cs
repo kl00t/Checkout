@@ -1,9 +1,12 @@
-﻿namespace Checkout.Data
+﻿namespace Checkout.Domain.Models
 {
+
+    using Interfaces;
+
     /// <summary>
     /// Product special offer class.
     /// </summary>
-    /// <seealso cref="Checkout.Data.ISpecialOffer" />
+    /// <seealso cref="ISpecialOffer" />
     public class SpecialOffer : ISpecialOffer
 	{
         /// <summary>

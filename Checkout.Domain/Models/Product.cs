@@ -1,9 +1,12 @@
-﻿namespace Checkout.Data
+﻿namespace Checkout.Domain.Models
 {
+
+    using Interfaces;
+
     /// <summary>
     /// Products that are scanned at the checkout.
     /// </summary>
-    /// <seealso cref="Checkout.Data.IProduct" />
+    /// <seealso cref="IProduct" />
     public class Product : IProduct
     {
         /// <summary>
