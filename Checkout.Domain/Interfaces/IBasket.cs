@@ -1,7 +1,6 @@
-﻿namespace Checkout.Core
+﻿namespace Checkout.Domain.Interfaces
 {
     using System.Collections.Generic;
-    using Data;
     using Domain.Models;
 
     /// <summary>

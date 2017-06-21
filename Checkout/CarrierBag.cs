@@ -2,7 +2,11 @@
 
 namespace Checkout.Core
 {
-	/// <summary>
+
+    using Domain.Interfaces;
+    using Settings;
+
+    /// <summary>
 	/// Carrier Bag class.
 	/// </summary>
 	public class CarrierBag : ICarrierBag

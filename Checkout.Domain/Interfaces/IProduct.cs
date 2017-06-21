@@ -1,6 +1,5 @@
 ﻿namespace Checkout.Domain.Interfaces
 {
-
     using Models;
 
     /// <summary>

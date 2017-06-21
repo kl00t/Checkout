@@ -81,14 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
-    <Compile Include="CheckoutResponse.cs" />
     <Compile Include="CheckoutService.svc.cs">
       <DependentUpon>CheckoutService.svc</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ICheckoutResponse.cs" />
     <Compile Include="ICheckoutService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceModule.cs" />

@@ -7,6 +7,7 @@
     using NUnit.Framework;
     using System;
     using System.Linq;
+    using Domain.Interfaces;
     using Domain.Models;
 
     /// <summary>

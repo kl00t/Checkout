@@ -1,4 +1,4 @@
-﻿namespace Checkout.Service.Web
+﻿namespace Checkout.Domain.Interfaces
 {
     /// <summary>
     /// Checkout response interface.

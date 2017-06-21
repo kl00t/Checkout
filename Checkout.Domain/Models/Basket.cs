@@ -1,8 +1,7 @@
-﻿namespace Checkout.Core
+﻿namespace Checkout.Domain.Models
 {
     using System.Collections.Generic;
-    using Data;
-    using Domain.Models;
+    using Domain.Interfaces;
 
     /// <summary>
     /// Basket class.

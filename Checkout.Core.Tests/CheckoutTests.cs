@@ -2,6 +2,7 @@
 {
     using Data;
     using Domain.Exceptions;
+    using Domain.Interfaces;
     using Domain.Models;
     using Moq;
 	using NUnit.Framework;

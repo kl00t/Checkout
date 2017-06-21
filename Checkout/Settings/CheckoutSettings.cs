@@ -1,4 +1,4 @@
-﻿namespace Checkout.Core {
+﻿namespace Checkout.Core.Settings {
     
     
     // This class allows you to handle specific events on the settings class:

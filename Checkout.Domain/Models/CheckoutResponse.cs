@@ -1,12 +1,13 @@
-﻿namespace Checkout.Service.Web
+﻿namespace Checkout.Domain.Models
 {
     using System;
     using System.Runtime.Serialization;
+    using Interfaces;
 
     /// <summary>
     /// Checkout response object.
     /// </summary>
-    /// <seealso cref="Checkout.Service.Web.ICheckoutResponse" />
+    /// <seealso cref="ICheckoutResponse" />
     [DataContract]
     [Serializable]
     public class CheckoutResponse : ICheckoutResponse

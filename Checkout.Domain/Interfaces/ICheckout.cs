@@ -1,4 +1,4 @@
-﻿namespace Checkout.Core
+﻿namespace Checkout.Domain.Interfaces
 {
     /// <summary>
     /// Checkout interface definition.

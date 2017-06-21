@@ -40,24 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Basket.cs" />
     <Compile Include="CarrierBag.cs" />
     <Compile Include="Checkout.cs" />
-    <Compile Include="CheckoutSettings.cs" />
-    <Compile Include="CheckoutSettings.Designer.cs">
+    <Compile Include="Settings\CheckoutSettings.cs" />
+    <Compile Include="Settings\CheckoutSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>CheckoutSettings.settings</DependentUpon>
     </Compile>
-    <Compile Include="IBasket.cs" />
-    <Compile Include="ICarrierBag.cs" />
     <Compile Include="Resources\Discounts.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Discounts.resx</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="ICheckout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="CheckoutSettings.settings">
+    <None Include="Settings\CheckoutSettings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>CheckoutSettings.Designer.cs</LastGenOutput>
     </None>

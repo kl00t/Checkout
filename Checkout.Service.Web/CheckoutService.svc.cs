@@ -3,6 +3,8 @@
     using Core;
     using Data;
     using Domain.Exceptions;
+    using Domain.Interfaces;
+    using Domain.Models;
 
     /// <summary>
     /// Checkout WCF Service.

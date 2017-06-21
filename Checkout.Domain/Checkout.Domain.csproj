@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\InvalidProductException.cs" />
+    <Compile Include="Interfaces\IBasket.cs" />
+    <Compile Include="Interfaces\ICarrierBag.cs" />
+    <Compile Include="Interfaces\ICheckout.cs" />
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\ISpecialOffer.cs" />
+    <Compile Include="Models\Basket.cs" />
+    <Compile Include="Models\CheckoutResponse.cs" />
+    <Compile Include="Interfaces\ICheckoutResponse.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SpecialOffer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

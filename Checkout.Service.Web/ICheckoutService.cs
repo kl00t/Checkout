@@ -1,6 +1,7 @@
 ﻿namespace Checkout.Service.Web
 {
     using System.ServiceModel;
+    using Domain.Models;
 
     /// <summary>
     /// Checkout service contract.
