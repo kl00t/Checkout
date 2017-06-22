@@ -1,5 +1,6 @@
 ﻿namespace Checkout.Domain.Interfaces
 {
+    using System;
     using Models;
 
     /// <summary>
@@ -7,6 +8,14 @@
     /// </summary>
     public interface IProduct
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
+        Guid Id { get; set; }
+
         /// <summary>
         /// Gets or sets the sku.
         /// </summary>

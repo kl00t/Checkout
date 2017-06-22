@@ -1,14 +1,24 @@
 ﻿namespace Checkout.Domain.Models
 {
-
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using Interfaces;
 
     /// <summary>
     /// Product special offer class.
     /// </summary>
-    /// <seealso cref="ISpecialOffer" />
+    /// <seealso cref="Checkout.Domain.Interfaces.ISpecialOffer" />
     public class SpecialOffer : ISpecialOffer
 	{
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
+        public Guid Id { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether the special offer is available.
         /// </summary>
@@ -32,5 +42,21 @@
         /// The discount applied to the total items.
         /// </value>
         public decimal Discount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product.
+        /// </summary>
+        /// <value>
+        /// The product.
+        /// </value>
+        public virtual Product Product { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product identifier.
+        /// </summary>
+        /// <value>
+        /// The product identifier.
+        /// </value>
+        public Guid ProductId { get; set; }
 	}
 }

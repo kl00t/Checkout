@@ -1,10 +1,21 @@
 ﻿namespace Checkout.Domain.Interfaces
 {
+
+    using System;
+
     /// <summary>
     /// Special Offer interface definition.
     /// </summary>
     public interface ISpecialOffer
 	{
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
+        Guid Id { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether the special offer is available.
         /// </summary>
