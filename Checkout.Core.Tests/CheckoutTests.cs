@@ -118,7 +118,7 @@
         public void VerifyThatNoScannedItemsReturnsZeroPrice()
         {
             _checkout.Scan(string.Empty);
-            Assert.AreEqual(0, _checkout.GetTotalPrice());
+            Assert.AreEqual(0, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@
         public void VerifyScannedItemReturnsCorrectPrice()
         {
             _checkout.Scan("A");
-            Assert.AreEqual(50, _checkout.GetTotalPrice());
+            Assert.AreEqual(50, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@
         {
             _checkout.Scan("A");
             _checkout.Scan("B");
-            Assert.AreEqual(80, _checkout.GetTotalPrice());
+            Assert.AreEqual(80, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@
             _checkout.Scan("A");
             _checkout.Scan(string.Empty);
             _checkout.Scan("B");
-            Assert.AreEqual(80, _checkout.GetTotalPrice());
+            Assert.AreEqual(80, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@
             _checkout.Scan("B");
             _checkout.Scan("C");
             _checkout.Scan("D");
-            Assert.AreEqual(115, _checkout.GetTotalPrice());
+            Assert.AreEqual(115, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@
             _checkout.Scan("A");
             _checkout.Scan("A");
             _checkout.Scan("A");
-            Assert.AreEqual(130, _checkout.GetTotalPrice());
+            Assert.AreEqual(130, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@
             _checkout.Scan("A");
             _checkout.Scan("A");
             _checkout.Scan("A");
-            Assert.AreEqual(180, _checkout.GetTotalPrice());
+            Assert.AreEqual(180, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@
             _checkout.Scan("A");
             _checkout.Scan("B");
             _checkout.Scan("A");
-            Assert.AreEqual(175, _checkout.GetTotalPrice());
+            Assert.AreEqual(175, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@
             _checkout.Scan("A");
             _checkout.Scan("A");
             _checkout.Scan("A");
-            Assert.AreEqual(260, _checkout.GetTotalPrice());
+            Assert.AreEqual(260, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -248,7 +248,7 @@
             _checkout.Scan("A");
             _checkout.Scan("B");
             _checkout.Scan("B");
-            Assert.AreEqual(350, _checkout.GetTotalPrice());
+            Assert.AreEqual(350, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@
         {
             _checkout.Scan("A");
             _checkout.Scan("A");
-            Assert.AreEqual(100, _checkout.GetTotalPrice());
+            Assert.AreEqual(100, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@
         public void VerifyThatScannedItemCancelHasNoEffectOnEmptyBasket()
         {
             _checkout.CancelScan("A");
-            Assert.AreEqual(0, _checkout.GetTotalPrice());
+            Assert.AreEqual(0, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -291,7 +291,7 @@
         {
             _checkout.Scan("A");
             _checkout.CancelScan("A");
-            Assert.AreEqual(0, _checkout.GetTotalPrice());
+            Assert.AreEqual(0, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -301,7 +301,7 @@
         public void VerifyNoScanCancelledItemIsIgnored()
         {
             _checkout.CancelScan(string.Empty);
-            Assert.AreEqual(0, _checkout.GetTotalPrice());
+            Assert.AreEqual(0, _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>
@@ -352,7 +352,7 @@
             _checkout.Scan("A");
             _checkout.Scan("A");
             _checkout.GetTotalPrice();
-            Assert.AreEqual("You did not save any money on your shopping today.", _checkout.GetTotalDiscounts());
+            Assert.AreEqual("You did not save any money on your shopping today.", _checkout.GetTotalDiscounts().TotalDiscount);
         }
 
         /// <summary>
@@ -365,7 +365,7 @@
             _checkout.Scan("A");
             _checkout.Scan("A");
             _checkout.GetTotalPrice();
-            Assert.AreEqual("You saved £20 on your shopping today.", _checkout.GetTotalDiscounts());
+            Assert.AreEqual("You saved £20 on your shopping today.", _checkout.GetTotalDiscounts().TotalDiscount);
         }
 
         [Test]
@@ -374,7 +374,7 @@
             _checkout.Scan("E");
             _checkout.Scan("E");
             _checkout.Scan("E");
-            Assert.AreEqual(19.98m, _checkout.GetTotalPrice());
+            Assert.AreEqual(19.98m, _checkout.GetTotalPrice().TotalPrice);
         }
 
         [Test]
@@ -384,7 +384,7 @@
             _checkout.Scan("E");
             _checkout.Scan("E");
             _checkout.GetTotalPrice();
-            Assert.AreEqual("You saved £9.99 on your shopping today.", _checkout.GetTotalDiscounts());
+            Assert.AreEqual("You saved £9.99 on your shopping today.", _checkout.GetTotalDiscounts().TotalDiscount);
         }
 
 		[Test]
@@ -393,7 +393,7 @@
 			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(0.05m);
 
 			_checkout.Scan("D");
-			Assert.AreEqual(15.05m, _checkout.GetTotalPrice());
+			Assert.AreEqual(15.05m, _checkout.GetTotalPrice().TotalPrice);
 		}
 
 		[Test]
@@ -406,7 +406,7 @@
 			_checkout.Scan("D");
 			_checkout.Scan("D");
 			_checkout.Scan("D");
-			Assert.AreEqual(75.05m, _checkout.GetTotalPrice());
+			Assert.AreEqual(75.05m, _checkout.GetTotalPrice().TotalPrice);
 		}
 
 		[Test]
@@ -420,7 +420,7 @@
 			_checkout.Scan("D");
 			_checkout.Scan("D");
 			_checkout.Scan("D");
-			Assert.AreEqual(90.10m, _checkout.GetTotalPrice());
+			Assert.AreEqual(90.10m, _checkout.GetTotalPrice().TotalPrice);
 		}
     }
 }

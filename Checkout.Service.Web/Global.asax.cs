@@ -44,7 +44,21 @@
 
         protected override IKernel CreateKernel()
         {
-            return new StandardKernel(new ServiceModule());
+            ////IKernel kernel = new StandardKernel();
+            ////try
+            ////{
+            ////    kernel.Load("*.Kernel.dll");
+            ////    return kernel;
+            ////}
+            ////catch
+            ////{
+            ////    kernel.Dispose();
+            ////    throw;
+            ////}
+
+            return new StandardKernel(new Kernel.Bindings());
+
+            ////return new StandardKernel(new ServiceModule());
         }
     }
 }

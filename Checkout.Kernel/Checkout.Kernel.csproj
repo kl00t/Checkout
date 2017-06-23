@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{976B2B83-E5DA-4DF3-B9EE-D44C975EA9E3}</ProjectGuid>
+    <ProjectGuid>{5EC42035-3B0E-466C-B6EB-8DB113786180}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Checkout.Domain</RootNamespace>
-    <AssemblyName>Checkout.Domain</AssemblyName>
+    <RootNamespace>Checkout.Kernel</RootNamespace>
+    <AssemblyName>Checkout.Kernel</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,11 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,25 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\InvalidProductException.cs" />
-    <Compile Include="Interfaces\IBasket.cs" />
-    <Compile Include="Interfaces\ICarrierBag.cs" />
-    <Compile Include="Interfaces\ICheckout.cs" />
-    <Compile Include="Interfaces\IProduct.cs" />
-    <Compile Include="Interfaces\IServiceInterface.cs" />
-    <Compile Include="Interfaces\ISpecialOffer.cs" />
-    <Compile Include="Models\Basket.cs" />
-    <Compile Include="Models\CancelScanResponse.cs" />
-    <Compile Include="Models\EventType.cs" />
-    <Compile Include="Models\GetTotalDiscountsResponse.cs" />
-    <Compile Include="Models\GetTotalPriceResponse.cs" />
-    <Compile Include="Models\ResponseBase.cs" />
-    <Compile Include="Models\ScanResponse.cs" />
-    <Compile Include="Models\ServiceError.cs" />
-    <Compile Include="Models\ServiceResponse.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\SpecialOffer.cs" />
+    <Compile Include="Bindings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Checkout.Data\Checkout.Data.csproj">
+      <Project>{2af520e6-b12e-44eb-b147-a3e34cb8a14d}</Project>
+      <Name>Checkout.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Checkout.Domain\Checkout.Domain.csproj">
+      <Project>{976b2b83-e5da-4df3-b9ee-d44c975ea9e3}</Project>
+      <Name>Checkout.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Checkout\Checkout.Core.csproj">
+      <Project>{d33d46fa-30be-4001-a4bd-d5c59eff2700}</Project>
+      <Name>Checkout.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

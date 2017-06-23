@@ -1,5 +1,7 @@
 ﻿namespace Checkout.Core
 {
+
+    using System;
     using Data;
 	using System.Collections.Generic;
     using System.Linq;
@@ -44,30 +46,28 @@
         /// Scans the specified item.
         /// </summary>
         /// <param name="item">The name of scanned item.</param>
-        public void Scan(string item)
+        public ScanResponse Scan(string item)
         {
-            if (string.IsNullOrEmpty(item))
+            if (!string.IsNullOrEmpty(item))
             {
-                // check condition and return early.
-                return;
+                _basket.Add(_productRepository.GetProductBySkuCode(item));
             }
 
-            _basket.Add(_productRepository.GetProductBySkuCode(item));
+            return new ScanResponse();
         }
 
         /// <summary>
         /// Cancels the scanned item.
         /// </summary>
         /// <param name="item">The item.</param>
-        public void CancelScan(string item)
+        public CancelScanResponse CancelScan(string item)
         {
-            if (string.IsNullOrEmpty(item))
+            if (!string.IsNullOrEmpty(item))
             {
-                // check condition and return early.
-                return;
+                _basket.Remove(_productRepository.GetProductBySkuCode(item));
             }
 
-            _basket.Remove(_productRepository.GetProductBySkuCode(item));
+            return new CancelScanResponse();
         }
 
         /// <summary>
@@ -76,12 +76,15 @@
         /// <returns>
         /// Returns the total price as a whole number.
         /// </returns>
-        public decimal GetTotalPrice()
+        public GetTotalPriceResponse GetTotalPrice()
         {
             CalculatePrice();
 			TotalBagCharge = _carrierBag.CalculateBagCharge(_basket.Count);
             TotalPrice = (SubTotal + TotalBagCharge) - TotalDiscount;
-            return TotalPrice;
+            return new GetTotalPriceResponse
+            {
+                TotalPrice = TotalPrice
+            };
         }
 
         /// <summary>
@@ -90,9 +93,12 @@
         /// <returns>
         /// Returns the total discounts message.
         /// </returns>
-        public string GetTotalDiscounts()
+        public GetTotalDiscountsResponse GetTotalDiscounts()
         {
-            return TotalDiscount == 0 ? Discounts.NoDiscountsApplied : string.Format(Discounts.DiscountsApplied, TotalDiscount.ToString("#.##"));
+            return new GetTotalDiscountsResponse
+            {
+                TotalDiscount = TotalDiscount == 0 ? Discounts.NoDiscountsApplied : string.Format(Discounts.DiscountsApplied, TotalDiscount.ToString("#.##"))
+            };
         }
 
         /// <summary>

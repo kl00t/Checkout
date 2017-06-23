@@ -101,7 +101,7 @@
         [When(@"I calculate the total price")]
         public void WhenICalculateTheTotalPrice()
         {
-            ScenarioContext.Current.Add("TotalPrice", _checkout.GetTotalPrice());
+            ScenarioContext.Current.Add("TotalPrice", _checkout.GetTotalPrice().TotalPrice);
         }
 
         /// <summary>

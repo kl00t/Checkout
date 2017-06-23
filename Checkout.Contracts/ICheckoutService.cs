@@ -1,15 +1,15 @@
-﻿namespace Checkout.Service.Web
+﻿namespace Checkout.Contracts
 {
-
     using System.Collections.Generic;
     using System.ServiceModel;
+    using Domain.Interfaces;
     using Domain.Models;
 
     /// <summary>
     /// Checkout service contract.
     /// </summary>
     [ServiceContract]
-    public interface ICheckoutService
+    public interface ICheckoutService : IServiceInterface
     {
         /// <summary>
         /// Scans the specified item.
@@ -17,7 +17,7 @@
         /// <param name="item">The item.</param>
         /// <returns>Returns a checkout response.</returns>
         [OperationContract]
-        CheckoutResponse Scan(string item);
+        ServiceResponse<ScanResponse> Scan(string item);
 
         /// <summary>
         /// Cancels the scan.
@@ -25,14 +25,14 @@
         /// <param name="item">The item.</param>
         /// <returns>Returns a checkout response.</returns>
         [OperationContract]
-        CheckoutResponse CancelScan(string item);
+        ServiceResponse<CancelScanResponse> CancelScan(string item);
 
         /// <summary>
         /// Totals the price.
         /// </summary>
         /// <returns>Returns the total price.</returns>
         [OperationContract]
-        decimal TotalPrice();
+        ServiceResponse<GetTotalPriceResponse> GetTotalPrice();
 
         /// <summary>
         /// Gets all products.
@@ -41,6 +41,6 @@
         /// Returns all products.
         /// </returns>
         [OperationContract]
-        List<Product> GetAllProducts();
+        ServiceResponse<List<Product>> GetAllProducts();
     }
 }
