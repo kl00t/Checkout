@@ -13,55 +13,54 @@
     public class ProductRepository : IProductRepository
     {
         /// <summary>
-        /// The list of products.
-        /// </summary>
-        private readonly List<Product> _products;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ProductRepository"/> class.
-        /// </summary>
-        public ProductRepository()
-        {
-			_products = new List<Product>();
-        }
-
-        /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>
         /// Returns the entity by the id.
         /// </returns>
-        public Product GetById(string id)
+        public Product GetById(Guid id)
         {
-            return _products.FirstOrDefault(x => x.Sku.Equals(id));
+            using (var context = new CheckoutContext())
+            {
+                return context.Products.FirstOrDefault(x => x.Id.Equals(id));
+            }
         }
 
         /// <summary>
         /// Creates the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        public void Insert(Product entity)
+        /// <param name="product">The product.</param>
+        public void Insert(Product product)
         {
-            _products.Add(entity);
+            using (var context = new CheckoutContext())
+            {
+                context.Products.Add(product);
+            }
         }
 
         /// <summary>
         /// Updates the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        public void Update(Product entity)
+        /// <param name="product">The product.</param>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Update(Product product)
         {
+            //var entity = GetProductBySkuCode(product.Sku);
             throw new NotImplementedException();
         }
 
         /// <summary>
         /// Deletes the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        public void Delete(Product entity)
+        /// <param name="product">The product.</param>
+        public void Delete(Product product)
         {
-            _products.Remove(entity);
+            var entity = GetProductBySkuCode(product.Sku);
+            using (var context = new CheckoutContext())
+            {
+                context.Products.Remove(entity);
+            }
         }
 
         /// <summary>
@@ -74,13 +73,16 @@
         /// <exception cref="InvalidProductException"></exception>
         public Product GetProductBySkuCode(string skuCode)
 		{
-			var product = _products.Find(x => x.Sku == skuCode);
-			if (product == null)
-			{
-				throw new InvalidProductException();
-			}
+            using (var context = new CheckoutContext())
+            {
+                var product = context.Products.FirstOrDefault(p => p.Sku == skuCode);
+                if (product == null)
+                {
+                    throw new InvalidProductException();
+                }
 
-			return product;
+                return product;
+            }
 		}
 
         /// <summary>
@@ -93,6 +95,20 @@
         public decimal GetProductUnitPrice(string skuCode)
         {
             return GetProductBySkuCode(skuCode).UnitPrice;
+        }
+
+        /// <summary>
+        /// Gets all products.
+        /// </summary>
+        /// <returns>
+        /// Returns all products.
+        /// </returns>
+        public List<Product> GetAllProducts()
+        {
+            using (var context = new CheckoutContext())
+            {
+                return context.Products.ToList();
+            }
         }
     }
 }

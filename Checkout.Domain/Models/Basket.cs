@@ -1,6 +1,6 @@
 ﻿namespace Checkout.Domain.Models
 {
-    using System.Collections.Generic;
+    using System;
     using Domain.Interfaces;
 
     /// <summary>
@@ -10,31 +10,19 @@
     public class Basket : IBasket
     {
         /// <summary>
-        /// Adds the specified product.
-        /// </summary>
-        /// <param name="product">The product.</param>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Add(Product product)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// Removes the specified product.
-        /// </summary>
-        /// <param name="product">The product.</param>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Remove(Product product)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// Gets or sets the products.
+        /// Gets or sets the identifier.
         /// </summary>
         /// <value>
-        /// The products.
+        /// The identifier.
         /// </value>
-        public List<Product> Products { get; set; }
+        public Guid Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product identifier.
+        /// </summary>
+        /// <value>
+        /// The product identifier.
+        /// </value>
+        public Guid ProductId { get; set; }
     }
 }

@@ -66,8 +66,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasketEntityConfiguration.cs" />
+    <Compile Include="BasketRepository.cs" />
     <Compile Include="CheckoutContext.cs" />
     <Compile Include="CheckoutDbInitializer.cs" />
+    <Compile Include="IBasketRepository.cs" />
     <Compile Include="IProductRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="MockProductRepository.cs" />

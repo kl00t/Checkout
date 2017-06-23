@@ -8,6 +8,7 @@
     /// <summary>
     /// Product Repository Tests.
     /// </summary>
+    [Ignore]
     [TestFixture]
     public class ProductRepositoryTests
     {

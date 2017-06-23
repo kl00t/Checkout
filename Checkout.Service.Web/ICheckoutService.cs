@@ -1,5 +1,7 @@
 ﻿namespace Checkout.Service.Web
 {
+
+    using System.Collections.Generic;
     using System.ServiceModel;
     using Domain.Models;
 
@@ -31,5 +33,14 @@
         /// <returns>Returns the total price.</returns>
         [OperationContract]
         decimal TotalPrice();
+
+        /// <summary>
+        /// Gets all products.
+        /// </summary>
+        /// <returns>
+        /// Returns all products.
+        /// </returns>
+        [OperationContract]
+        List<Product> GetAllProducts();
     }
 }

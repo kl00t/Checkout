@@ -26,6 +26,7 @@
             {
                 new Product
                 {
+                    Id = Guid.NewGuid(),
                     Sku = "A",
                     UnitPrice = 50m,
                     Description = "Pineapple",
@@ -38,6 +39,7 @@
                 },
                 new Product
                 {
+                    Id = Guid.NewGuid(),
                     Sku = "B",
                     UnitPrice = 30m,
                     Description = "Mango",
@@ -50,6 +52,7 @@
                 },
                 new Product
                 {
+                    Id = Guid.NewGuid(),
                     Sku = "C",
                     UnitPrice = 20m,
                     Description = "Kiwi",
@@ -60,6 +63,7 @@
                 },
                 new Product
                 {
+                    Id = Guid.NewGuid(),
                     Sku = "D",
                     UnitPrice = 15m,
                     Description = "Melon",
@@ -70,6 +74,7 @@
                 },
                 new Product
                 {
+                    Id = Guid.NewGuid(),
                     Sku = "E",
                     UnitPrice = 9.99m,
                     Description = "Banana",
@@ -90,9 +95,9 @@
         /// <returns>
         /// Returns the entity by the id.
         /// </returns>
-        public Product GetById(string id)
+        public Product GetById(Guid id)
         {
-            return _products.FirstOrDefault(x => x.Sku.Equals(id));
+            return _products.FirstOrDefault(x => x.Id.Equals(id));
         }
 
         /// <summary>
@@ -151,6 +156,17 @@
         public decimal GetProductUnitPrice(string skuCode)
         {
             return GetProductBySkuCode(skuCode).UnitPrice;
+        }
+
+        /// <summary>
+        /// Gets all products.
+        /// </summary>
+        /// <returns>
+        /// Returns all products.
+        /// </returns>
+        public List<Product> GetAllProducts()
+        {
+            return _products.ToList();
         }
     }
 }

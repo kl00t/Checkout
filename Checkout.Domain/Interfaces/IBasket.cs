@@ -1,5 +1,6 @@
 ﻿namespace Checkout.Domain.Interfaces
 {
+    using System;
     using System.Collections.Generic;
     using Domain.Models;
 
@@ -9,23 +10,19 @@
     public interface IBasket
     {
         /// <summary>
-        /// Adds the specified product.
-        /// </summary>
-        /// <param name="product">The product.</param>
-        void Add(Product product);
-
-        /// <summary>
-        /// Removes the specified product.
-        /// </summary>
-        /// <param name="product">The product.</param>
-        void Remove(Product product);
-
-        /// <summary>
-        /// Gets or sets the products.
+        /// Gets or sets the identifier.
         /// </summary>
         /// <value>
-        /// The products.
+        /// The identifier.
         /// </value>
-        List<Product> Products { get; set; }
+        Guid Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product identifier.
+        /// </summary>
+        /// <value>
+        /// The product identifier.
+        /// </value>
+        Guid ProductId { get; set; }
     }
 }

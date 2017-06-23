@@ -15,12 +15,65 @@
             {
                 Id = Guid.NewGuid(),
                 Sku = "A",
-                UnitPrice = 9.99m,
-                Description = "new product",
+                UnitPrice = 50m,
+                Description = "Pineapple",
                 SpecialOffer = new SpecialOffer
                 {
-                    Id = Guid.NewGuid(),
+                    IsAvailable = true,
+                    Quantity = 3,
+                    Discount = 20
+                }
+            });
+
+            products.Add(new Product
+            {
+                Id = Guid.NewGuid(),
+                Sku = "B",
+                UnitPrice = 30m,
+                Description = "Mango",
+                SpecialOffer = new SpecialOffer
+                {
+                    IsAvailable = true,
+                    Quantity = 2,
+                    Discount = 15
+                }
+            });
+
+            products.Add(new Product
+            {
+                Id = Guid.NewGuid(),
+                Sku = "C",
+                UnitPrice = 20m,
+                Description = "Kiwi",
+                SpecialOffer = new SpecialOffer
+                {
                     IsAvailable = false
+                }
+            });
+
+            products.Add(new Product
+            {
+                Id = Guid.NewGuid(),
+                Sku = "D",
+                UnitPrice = 15m,
+                Description = "Melon",
+                SpecialOffer = new SpecialOffer
+                {
+                    IsAvailable = false
+                }
+            });
+
+            products.Add(new Product
+            {
+                Id = Guid.NewGuid(),
+                Sku = "E",
+                UnitPrice = 9.99m,
+                Description = "Banana",
+                SpecialOffer = new SpecialOffer
+                {
+                    IsAvailable = true,
+                    Quantity = 3,
+                    Discount = 9.99m
                 }
             });
 

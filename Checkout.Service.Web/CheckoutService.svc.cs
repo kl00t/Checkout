@@ -1,6 +1,7 @@
 ﻿namespace Checkout.Service.Web
 {
-    using Core;
+
+    using System.Collections.Generic;
     using Data;
     using Domain.Exceptions;
     using Domain.Interfaces;
@@ -17,12 +18,19 @@
         private readonly ICheckout _checkout;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CheckoutService"/> class.
+        /// The product repository
+        /// </summary>
+        private readonly IProductRepository _productRepository;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CheckoutService" /> class.
         /// </summary>
         /// <param name="checkout">The checkout.</param>
-        public CheckoutService(ICheckout checkout)
+        /// <param name="productRepository">The product repository.</param>
+        public CheckoutService(ICheckout checkout, IProductRepository productRepository)
         {
             _checkout = checkout;
+            _productRepository = productRepository;
         }
 
         /// <summary>
@@ -90,6 +98,17 @@
         public decimal TotalPrice()
         {
             return _checkout.GetTotalPrice();
+        }
+
+        /// <summary>
+        /// Gets all products.
+        /// </summary>
+        /// <returns>
+        /// Returns all products.
+        /// </returns>
+        public List<Product> GetAllProducts()
+        {
+            return _productRepository.GetAllProducts();
         }
     }
 }
