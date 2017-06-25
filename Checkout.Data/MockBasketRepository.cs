@@ -4,8 +4,32 @@
 	using System.Collections.Generic;
 	using Domain.Models;
 
-	public class BasketRepository : IBasketRepository
-    {
+	public class MockBasketRepository : IBasketRepository
+	{
+		private readonly Dictionary<Guid, List<Product>> _baskets;
+
+		public MockBasketRepository()
+		{
+			var products1 = new List<Product>
+			{
+				new Product { Id = Guid.NewGuid() }
+			};
+
+			var products2 = new List<Product>
+			{
+				new Product { Id = Guid.NewGuid() }
+			};
+
+			var products3 = new List<Product>
+			{
+				new Product { Id = Guid.NewGuid() }
+			};
+
+			_baskets.Add(Guid.NewGuid(), products1);
+			_baskets.Add(Guid.NewGuid(), products2);
+			_baskets.Add(Guid.NewGuid(), products3);
+		}
+
         public Basket GetById(Guid id)
         {
             throw new NotImplementedException();

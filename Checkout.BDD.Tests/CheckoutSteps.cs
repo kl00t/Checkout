@@ -31,6 +31,11 @@
         /// </summary>
         private static Mock<ICarrierBag> _mockCarrierBag;
 
+		/// <summary>
+		/// The mock basket repository.
+		/// </summary>
+		private static Mock<IBasketRepository> _mockBasketRepository;
+
         /// <summary>
         /// Test runs befores the scenario.
         /// </summary>
@@ -39,6 +44,7 @@
         {
             _mockProductRepository = new Mock<IProductRepository>();
             _mockCarrierBag = new Mock<ICarrierBag>();
+			_mockBasketRepository = new Mock<IBasketRepository>();
         }
 
         /// <summary>
@@ -92,7 +98,10 @@
         [Given(@"I have a checkout system")]
         public static void GivenIHaveACheckoutSystem()
         {
-            _checkout = new Checkout(_mockProductRepository.Object, _mockCarrierBag.Object);
+            _checkout = new Checkout(
+				_mockProductRepository.Object, 
+				_mockCarrierBag.Object,
+				_mockBasketRepository.Object);
         }
 
         /// <summary>

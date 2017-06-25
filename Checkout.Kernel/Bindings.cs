@@ -15,10 +15,15 @@
         public override void Load()
         {
             Bind<ILogger>().To<Logger>();
-            Bind<IBasket>().To<Basket>();
-            Bind<ICheckout>().To<Checkout>();
-            Bind<IProduct>().To<Product>();
-            Bind<ICarrierBag>().To<CarrierBag>();
+
+			Bind<ICheckout>().To<Checkout>();
+			Bind<ICarrierBag>().To<CarrierBag>();
+
+			Bind<IBasket>().To<Basket>();
+			//Bind<IBasketRepository>().To<BasketRepository>();
+			Bind<IBasketRepository>().To<MockBasketRepository>();
+
+			Bind<IProduct>().To<Product>();
             Bind<IProductRepository>().To<MockProductRepository>();
             ////Bind<IProductRepository>().To<ProductRepository>();
         }

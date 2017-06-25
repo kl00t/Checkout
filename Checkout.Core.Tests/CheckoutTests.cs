@@ -28,13 +28,19 @@
         /// </summary>
         private Mock<ICarrierBag> _mockCarrierBag;
 
+		/// <summary>
+		/// The mock basket repository.
+		/// </summary>
+		private Mock<IBasketRepository> _mockBasketRepository;
+
         /// <summary>
         /// Called before each test is run.
         /// </summary>
         [SetUp]
         public void SetUp()
         {
-            _mockProductRepository = new Mock<IProductRepository>();
+			_mockBasketRepository = new Mock<IBasketRepository>();
+			_mockProductRepository = new Mock<IProductRepository>();
 			_mockCarrierBag = new Mock<ICarrierBag>();
 			_mockCarrierBag.Setup(x => x.CalculateBagCharge(It.IsAny<int>())).Returns(0);
 
@@ -108,7 +114,10 @@
                         }
                     });
 
-            _checkout = new Checkout(_mockProductRepository.Object, _mockCarrierBag.Object);
+            _checkout = new Checkout(
+				_mockProductRepository.Object, 
+				_mockCarrierBag.Object,
+				_mockBasketRepository.Object);
         }
 
         /// <summary>

@@ -26,6 +26,11 @@
 		private readonly ICarrierBag _carrierBag;
 
 		/// <summary>
+		/// The basket repository.
+		/// </summary>
+		private readonly IBasketRepository _basketRepository;
+
+		/// <summary>
 		/// The basket of items.
 		/// </summary>
 		private readonly List<Product> _basket;
@@ -35,10 +40,11 @@
         /// </summary>
         /// <param name="productRepository">The product repository.</param>
         /// <param name="carrierBag">The carrier bag.</param>
-        public Checkout(IProductRepository productRepository, ICarrierBag carrierBag)
+        public Checkout(IProductRepository productRepository, ICarrierBag carrierBag, IBasketRepository basketRepository)
         {
             _productRepository = productRepository;
 			_carrierBag = carrierBag;
+			_basketRepository = basketRepository;
             _basket = new List<Product>();
         }
 
