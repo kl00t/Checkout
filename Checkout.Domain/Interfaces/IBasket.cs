@@ -1,8 +1,6 @@
 ﻿namespace Checkout.Domain.Interfaces
 {
     using System;
-    using System.Collections.Generic;
-    using Domain.Models;
 
     /// <summary>
     /// Basket interface.

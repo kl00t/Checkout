@@ -1,7 +1,6 @@
 ﻿namespace Checkout.Core
 {
 
-    using System;
     using Data;
 	using System.Collections.Generic;
     using System.Linq;
@@ -40,6 +39,7 @@
         /// </summary>
         /// <param name="productRepository">The product repository.</param>
         /// <param name="carrierBag">The carrier bag.</param>
+        /// <param name="basketRepository">The basket repository.</param>
         public Checkout(IProductRepository productRepository, ICarrierBag carrierBag, IBasketRepository basketRepository)
         {
             _productRepository = productRepository;

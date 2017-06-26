@@ -1,12 +1,9 @@
 ﻿namespace Checkout.Service.Web
 {
     using System;
-    using System.Collections.Generic;
     using Contracts;
-    using Core;
     using Core.Framework;
     using Core.Logging;
-    using Data;
     using Domain.Interfaces;
     using Domain.Models;
 
@@ -21,35 +18,21 @@
         private readonly ICheckout _checkout;
 
         /// <summary>
-        /// The product repository
-        /// </summary>
-        private readonly IProductRepository _productRepository;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="CheckoutService" /> class.
         /// </summary>
         /// <param name="checkout">The checkout.</param>
-        /// <param name="productRepository">The product repository.</param>
         /// <param name="logger">The logger.</param>
-        /// <exception cref="System.ArgumentNullException">
-        /// checkout
+        /// <exception cref="System.ArgumentNullException">checkout
         /// or
-        /// productRepository
-        /// </exception>
-        public CheckoutService(ICheckout checkout, IProductRepository productRepository, ILogger logger) : base(logger)
+        /// productRepository</exception>
+        public CheckoutService(ICheckout checkout, ILogger logger) : base(logger)
         {
             if (checkout == null)
             {
                 throw new ArgumentNullException("checkout");
             }
 
-            if (productRepository == null)
-            {
-                throw new ArgumentNullException("productRepository");
-            }
-
             _checkout = checkout;
-            _productRepository = productRepository;
         }
 
         /// <summary>
@@ -91,19 +74,6 @@
             return CallEngine(
                 () => _checkout.GetTotalPrice(),
                 EventType.GetTotalPrice);
-        }
-
-        /// <summary>
-        /// Gets all products.
-        /// </summary>
-        /// <returns>
-        /// Returns all products.
-        /// </returns>
-        public ServiceResponse<List<Product>> GetAllProducts()
-        {
-            return CallEngine(
-                () => _productRepository.GetAllProducts(),
-                EventType.GetAllProducts);
         }
     }
 }

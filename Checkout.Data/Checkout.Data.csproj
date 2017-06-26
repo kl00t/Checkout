@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasketEntityConfiguration.cs" />
+    <Compile Include="FakeData.cs" />
     <Compile Include="MockBasketRepository.cs" />
     <Compile Include="BasketRepository.cs" />
     <Compile Include="CheckoutContext.cs" />

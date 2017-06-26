@@ -10,13 +10,13 @@
         /// Adds the specified product.
         /// </summary>
         /// <param name="product">The product.</param>
-        void Add(Product product);
+        void AddProductItem(Product product);
 
         /// <summary>
         /// Removes the specified product.
         /// </summary>
         /// <param name="product">The product.</param>
-        void Remove(Product product);
+        void RemoveProductItem(Product product);
 
 		/// <summary>
 		/// Gets all the basket products.

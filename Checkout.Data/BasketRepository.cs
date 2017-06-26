@@ -26,12 +26,12 @@
             throw new NotImplementedException();
         }
 
-        public void Add(Product product)
+        public void AddProductItem(Product product)
         {
             throw new NotImplementedException();
         }
 
-        public void Remove(Product product)
+        public void RemoveProductItem(Product product)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,5 @@
 ﻿namespace Checkout.Contracts
 {
-    using System.Collections.Generic;
     using System.ServiceModel;
     using Domain.Interfaces;
     using Domain.Models;
@@ -33,14 +32,5 @@
         /// <returns>Returns the total price.</returns>
         [OperationContract]
         ServiceResponse<GetTotalPriceResponse> GetTotalPrice();
-
-        /// <summary>
-        /// Gets all products.
-        /// </summary>
-        /// <returns>
-        /// Returns all products.
-        /// </returns>
-        [OperationContract]
-        ServiceResponse<List<Product>> GetAllProducts();
     }
 }
