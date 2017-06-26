@@ -110,5 +110,15 @@
                 return context.Products.ToList();
             }
         }
-    }
+
+		public AddProductResponse AddProduct(Product product)
+		{
+			Insert(product);
+
+			return new AddProductResponse
+			{
+				ProductId = Guid.NewGuid()
+			};
+		}
+	}
 }

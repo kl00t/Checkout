@@ -33,17 +33,29 @@
             _productRepository = productRepository;
         }
 
-        /// <summary>
-        /// Gets all products.
-        /// </summary>
-        /// <returns>
-        /// Returns all products.
-        /// </returns>
-        public ServiceResponse<List<Product>> GetAllProducts()
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="product"></param>
+		/// <returns></returns>
+		public ServiceResponse<AddProductResponse> AddProduct(Product product)
+		{
+			return CallEngine(
+				() => _productRepository.AddProduct(product),
+				EventType.AddProduct);
+		}
+
+		/// <summary>
+		/// Gets all products.
+		/// </summary>
+		/// <returns>
+		/// Returns all products.
+		/// </returns>
+		public ServiceResponse<List<Product>> GetAllProducts()
         {
             return CallEngine(
                 () => _productRepository.GetAllProducts(),
                 EventType.GetAllProducts);
         }
-    }
+	}
 }

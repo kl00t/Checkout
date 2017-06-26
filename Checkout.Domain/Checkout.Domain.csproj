@@ -50,6 +50,7 @@
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\IServiceInterface.cs" />
     <Compile Include="Interfaces\ISpecialOffer.cs" />
+    <Compile Include="Models\AddProductResponse.cs" />
     <Compile Include="Models\Basket.cs" />
     <Compile Include="Models\CancelScanResponse.cs" />
     <Compile Include="Models\EventType.cs" />

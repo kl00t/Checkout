@@ -41,6 +41,12 @@
         /// The get all products
         /// </summary>
         [EnumMember]
-        GetAllProducts
-    }
+        GetAllProducts,
+
+		/// <summary>
+		/// Add new product.
+		/// </summary>
+		[EnumMember]
+		AddProduct
+	}
 }

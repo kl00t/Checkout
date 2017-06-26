@@ -4,11 +4,12 @@
     using System.ServiceModel;
     using Domain.Interfaces;
     using Domain.Models;
+	using System;
 
-    /// <summary>
-    /// Product service contract.
-    /// </summary>
-    [ServiceContract]
+	/// <summary>
+	/// Product service contract.
+	/// </summary>
+	[ServiceContract]
     public interface IProductService : IServiceInterface
     {
         /// <summary>
@@ -19,5 +20,8 @@
         /// </returns>
         [OperationContract]
         ServiceResponse<List<Product>> GetAllProducts();
+
+		[OperationContract]
+		ServiceResponse<AddProductResponse> AddProduct(Product product);
     }
 }

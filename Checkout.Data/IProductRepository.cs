@@ -30,5 +30,7 @@
         /// Returns all products.
         /// </returns>
         List<Product> GetAllProducts();
-    }
+
+		AddProductResponse AddProduct(Product product);
+	}
 }

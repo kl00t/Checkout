@@ -14,11 +14,11 @@
         /// <returns>Returns the entity by the id.</returns>
         TEntity GetById(TKey id);
 
-        /// <summary>
-        /// Inserts the specified entity.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        void Insert(TEntity entity);
+		/// <summary>
+		/// Inserts the specified entity.
+		/// </summary>
+		/// <param name="entity">The entity.</param>
+		void Insert(TEntity entity);
 
         /// <summary>
         /// Updates the specified entity.

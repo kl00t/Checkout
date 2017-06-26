@@ -105,5 +105,20 @@
         {
             return _products.ToList();
         }
-    }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="product"></param>
+		/// <returns></returns>
+		public AddProductResponse AddProduct(Product product)
+		{
+			_products.Add(product);
+
+			return new AddProductResponse
+			{
+				ProductId = Guid.NewGuid()
+			};
+		}
+	}
 }
