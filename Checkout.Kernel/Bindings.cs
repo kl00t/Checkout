@@ -24,7 +24,7 @@
 			Bind<IBasketRepository>().To<MockBasketRepository>();
 
 			Bind<IProduct>().To<Product>();
-            Bind<IProductRepository>().To<MockProductRepository>();
+            Bind<IProductRepository>().ToConstant(new MockProductRepository());
             ////Bind<IProductRepository>().To<ProductRepository>();
         }
     }
